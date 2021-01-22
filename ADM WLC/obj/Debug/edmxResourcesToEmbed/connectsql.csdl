@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wlcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="process_status">
+    <Key>
+      <PropertyRef Name="process_no" />
+    </Key>
+    <Property Name="process_no" Type="Int32" Nullable="false" />
+    <Property Name="process_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="model_code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="job_code_b1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="job_code_b2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="standard_progress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="current_progress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="margin_of_delay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="margin_of_advance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cut_off" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="wlcEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="process_status" EntityType="Self.process_status" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wlcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="process_status">
+    <Key>
+      <PropertyRef Name="process_no" />
+    </Key>
+    <Property Name="process_no" Type="int" Nullable="false" />
+    <Property Name="process_name" Type="varchar" MaxLength="50" />
+    <Property Name="pid" Type="varchar" MaxLength="50" />
+    <Property Name="model_code" Type="varchar" MaxLength="50" />
+    <Property Name="job_code_b1" Type="varchar" MaxLength="50" />
+    <Property Name="job_code_b2" Type="varchar" MaxLength="50" />
+    <Property Name="standard_progress" Type="varchar" MaxLength="50" />
+    <Property Name="current_progress" Type="varchar" MaxLength="50" />
+    <Property Name="margin_of_delay" Type="varchar" MaxLength="50" />
+    <Property Name="margin_of_advance" Type="varchar" MaxLength="50" />
+    <Property Name="cut_off" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="wlcModelStoreContainer">
+    <EntitySet Name="process_status" EntityType="Self.process_status" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
