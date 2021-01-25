@@ -15,8 +15,8 @@ namespace ADM_WLC
     public partial class load_data_specified : Form
     {
         private readonly form_wlc_data _form;
-        private DataTable dt;
         private SqlConnection conn;
+        private DataTable dt;
 
         public load_data_specified(form_wlc_data form)
         {
@@ -24,7 +24,7 @@ namespace ADM_WLC
             _form = form;
         }
 
-        private void CreateTbTemp()
+        private void CreateTb_Temp()
         {
             try
             {
@@ -52,19 +52,32 @@ namespace ADM_WLC
             }
         }
 
-        private void dtTable()
+        private void InsertTb()
         {
             //string firstPID = tb_head_pid_load_data_specified.Text;
             //string lastPID = tb_last_pid_specified.Text;
             int numb = Convert.ToInt32(tb_numb_data_specified.Text);
             try
             {
-                string Query = @"SELECT TOP "+ numb +" pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification FROM wlc_data_temp";
-
+                string data = @"SELECT pid, vin FROM wlc_data INTERSECT SELECT pid, vin FROM wlc_data_temp";
                 dt = new DataTable();
-                dt = Helpers.GetDatatable(Query);
-                _form.dataGridView_wlc_data.DataSource = dt;
-                
+                dt = Helpers.GetDatatable(data);
+
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("PID or VIN Already Exists!!", "ADM WL/C");
+                }
+                else
+                {
+                    string Query = @"INSERT INTO wlc_data SELECT TOP " + numb + " * FROM wlc_data_temp";
+                    conn = new SqlConnection();
+                    conn.ConnectionString = Helpers.connectionString;
+                    SqlCommand cmd = new SqlCommand(Query, conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+
             }
             catch (Exception ex)
             {
@@ -74,13 +87,20 @@ namespace ADM_WLC
 
         public void DeleteTb_Temp()
         {
-            string Query = @"DROP TABLE [adm_wlc].[dbo].[wlc_data_temp]";
-            conn = new SqlConnection();
-            conn.ConnectionString = Helpers.connectionString;
-            SqlCommand cmd = new SqlCommand(Query, conn);
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            try
+            {
+                string Query = @"DROP TABLE [adm_wlc].[dbo].[wlc_data_temp]";
+                conn = new SqlConnection();
+                conn.ConnectionString = Helpers.connectionString;
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_cancel_load_data_specified_Click(object sender, EventArgs e)
@@ -90,12 +110,11 @@ namespace ADM_WLC
 
         private void btn_load_specified_Click(object sender, EventArgs e)
         {
-            CreateTbTemp();
+            CreateTb_Temp();
             _form.SaveTemp();
-            dtTable();
-            _form.LoadSpecific();
-            _form.TampilAll();
+            InsertTb();
             DeleteTb_Temp();
+            _form.TampilAll();
             this.Close();
         }
 

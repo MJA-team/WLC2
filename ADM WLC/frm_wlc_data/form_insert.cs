@@ -16,6 +16,7 @@ namespace ADM_WLC
     {
         private readonly form_wlc_data _form;
         private SqlConnection conn;
+        private DataTable dt;
 
         public enum Classification { Plan = 0, SendPLC = 1, Insert = 2, Delete = 3, Suspended = 4 };
 
@@ -51,23 +52,35 @@ namespace ADM_WLC
                 string model = tb_model_insert.Text;
                 string suffix = tb_suffix_insert.Text;
                 string chasis = tb_chassis_number.Text;
-                string Query = @"INSERT INTO wlc_data (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
-                                        VALUES ('" + sequence + "', " +
-                                            "'" + pid + "', " +
-                                            "'" + vin + "'," +
-                                            "'" + _date + "'," +
-                                            "'" + wlc + "'," +
-                                            "'" + model + "'," +
-                                            "'" + suffix + "'," +
-                                            "'" + chasis + "'," +
-                                            "'" + classif + "')";
 
-                conn = new SqlConnection();
-                conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                string data = @"SELECT * FROM wlc_data WHERE pid = '" + pid + "' AND vin = '" + vin + "'";
+                dt = new DataTable();
+                dt = Helpers.GetDatatable(data);
+
+                if (dt.Rows.Count > 0)
+                {
+                    MessageBox.Show("PID or VIN Already Exists!!", "ADM WL/C");
+                }
+                else
+                {
+                    string Query = @"INSERT INTO wlc_data (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
+                                   VALUES ('" + sequence + "', " +
+                                          "'" + pid + "', " +
+                                          "'" + vin + "'," +
+                                          "'" + _date + "'," +
+                                          "'" + wlc + "'," +
+                                          "'" + model + "'," +
+                                          "'" + suffix + "'," +
+                                          "'" + chasis + "'," +
+                                          "'" + classif + "')";
+
+                    conn = new SqlConnection();
+                    conn.ConnectionString = Helpers.connectionString;
+                    SqlCommand cmd = new SqlCommand(Query, conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -78,11 +91,6 @@ namespace ADM_WLC
         private void btn_close_insert_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void form_insert_Load(object sender, EventArgs e)
-        {
-           
         }
 
         private void btn_insert_top_insert_Click(object sender, EventArgs e)

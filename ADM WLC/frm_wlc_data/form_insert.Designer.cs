@@ -250,7 +250,6 @@
             this.Name = "form_insert";
             this.ShowIcon = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.form_insert_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
