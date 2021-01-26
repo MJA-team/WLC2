@@ -57,7 +57,6 @@ namespace ADM_WLC
             }
         }
 
-        
         public void SaveAll()
         {
             try
@@ -241,13 +240,12 @@ namespace ADM_WLC
                                                 "'" + chasis + "'," +
                                                 "'" + classif + "')";
 
-                    conn = new SqlConnection();
-                    conn.ConnectionString = Helpers.connectionString;
-                    SqlCommand cmd = new SqlCommand(Query, conn);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-
+                        conn = new SqlConnection();
+                        conn.ConnectionString = Helpers.connectionString;
+                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
                 }
 
             }
@@ -263,32 +261,64 @@ namespace ADM_WLC
             form_insert f = new form_insert(this);
             int index = dataGridView_wlc_data.SelectedRows[0].Index;
             int idx = index + 1;
-            DataRow dr = dt.NewRow();
-            dr[0] = GetText.pid;
-            dr[1] = GetText.vin;
-            dr[2] = GetText.date;
-            dr[3] = GetText.wlc;
-            dr[4] = GetText.model;
-            dr[5] = GetText.suffix;
-            dr[6] = GetText.chassis;
-            dr[7] = "Plan";
-            dt.Rows.InsertAt(dr, idx);
+            bool Itemfound = false;
+            if (dataGridView_wlc_data.Rows.Count > 0)
+            {
+                foreach(DataGridViewRow NewItem in dataGridView_wlc_data.Rows)
+                {
+                    if (Convert.ToString(NewItem.Cells[1].Value) == GetText.pid || Convert.ToString(NewItem.Cells[2].Value) == GetText.vin)
+                    {
+                        Itemfound = true;
+                        MessageBox.Show("PID or VIN Already Exists!!", "ADM WL/C");
+                        break;
+                    }
+                }
+            }
+            if (Itemfound == false)
+            {
+                DataRow dr = dt.NewRow();
+                dr[0] = GetText.pid;
+                dr[1] = GetText.vin;
+                dr[2] = GetText.date;
+                dr[3] = GetText.wlc;
+                dr[4] = GetText.model;
+                dr[5] = GetText.suffix;
+                dr[6] = GetText.chassis;
+                dr[7] = "Plan";
+                dt.Rows.InsertAt(dr, idx);
+            }
         }
 
         public void InsertTop()
         {
             form_insert f = new form_insert(this);
             int index = dataGridView_wlc_data.Rows[0].Index;
-            DataRow dr = dt.NewRow();
-            dr[0] = GetText.pid;
-            dr[1] = GetText.vin;
-            dr[2] = GetText.date;
-            dr[3] = GetText.wlc;
-            dr[4] = GetText.model;
-            dr[5] = GetText.suffix;
-            dr[6] = GetText.chassis;
-            dr[7] = "Plan";
-            dt.Rows.InsertAt(dr, index);
+            bool Itemfound = false;
+            if (dataGridView_wlc_data.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow NewItem in dataGridView_wlc_data.Rows)
+                {
+                    if (Convert.ToString(NewItem.Cells[1].Value) == GetText.pid || Convert.ToString(NewItem.Cells[2].Value) == GetText.vin)
+                    {
+                        Itemfound = true;
+                        MessageBox.Show("PID or VIN Already Exists!!", "ADM WL/C");
+                        break;
+                    }
+                }
+            }
+            if (Itemfound == false)
+            {
+                DataRow dr = dt.NewRow();
+                dr[0] = GetText.pid;
+                dr[1] = GetText.vin;
+                dr[2] = GetText.date;
+                dr[3] = GetText.wlc;
+                dr[4] = GetText.model;
+                dr[5] = GetText.suffix;
+                dr[6] = GetText.chassis;
+                dr[7] = "Plan";
+                dt.Rows.InsertAt(dr, index);
+            }
         }
 
         

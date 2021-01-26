@@ -16,7 +16,6 @@ namespace ADM_WLC
     {
         private readonly form_wlc_data _form;
         private SqlConnection conn;
-        private DataTable dt;
 
         public enum Classification { Plan = 0, SendPLC = 1, Insert = 2, Delete = 3, Suspended = 4 };
 
@@ -37,7 +36,7 @@ namespace ADM_WLC
             GetText.chassis = tb_chassis_number.Text;
         }
 
-        private void Insert()
+        private void InsertNew()
         {
             try
             {
@@ -52,18 +51,7 @@ namespace ADM_WLC
                 string model = tb_model_insert.Text;
                 string suffix = tb_suffix_insert.Text;
                 string chasis = tb_chassis_number.Text;
-
-                string data = @"SELECT * FROM wlc_data WHERE pid = '" + pid + "' AND vin = '" + vin + "'";
-                dt = new DataTable();
-                dt = Helpers.GetDatatable(data);
-
-                if (dt.Rows.Count > 0)
-                {
-                    MessageBox.Show("PID or VIN Already Exists!!", "ADM WL/C");
-                }
-                else
-                {
-                    string Query = @"INSERT INTO wlc_data (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
+                string Query = @"INSERT INTO wlc_data (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
                                    VALUES ('" + sequence + "', " +
                                           "'" + pid + "', " +
                                           "'" + vin + "'," +
@@ -80,7 +68,6 @@ namespace ADM_WLC
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                }
             }
             catch (Exception ex)
             {
@@ -123,7 +110,7 @@ namespace ADM_WLC
             {
                 if (_form.dataGridView_wlc_data.Rows.Count < 0)
                 {
-                    Insert();
+                    InsertNew();
                     _form.TampilAll();
                     this.Close();
                 }
@@ -169,7 +156,7 @@ namespace ADM_WLC
             {
                 if (_form.dataGridView_wlc_data.Rows.Count == 0)
                 {
-                    Insert();
+                    InsertNew();
                     _form.TampilAll();
                     this.Close();
                 }
