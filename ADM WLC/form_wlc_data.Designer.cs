@@ -34,13 +34,6 @@
             this.btn_close_wlc_data = new System.Windows.Forms.Button();
             this.btn_alldelete_wlc_data = new System.Windows.Forms.Button();
             this.dataGridView_wlc_data = new System.Windows.Forms.DataGridView();
-            this.btn_dataloading_wlc_data = new System.Windows.Forms.Button();
-            this.btn_suspend_wlc_data = new System.Windows.Forms.Button();
-            this.btn_suspenddatalist_wlc_data = new System.Windows.Forms.Button();
-            this.btn_insert_wlc_data = new System.Windows.Forms.Button();
-            this.btn_delete_wlc_data = new System.Windows.Forms.Button();
-            this.btn_deleteplan_wlc_data = new System.Windows.Forms.Button();
-            this.pnl_suspend_data_list_wlc_data = new System.Windows.Forms.Panel();
             this.seq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vin = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +43,13 @@
             this.suffix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chassis_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.classification = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_dataloading_wlc_data = new System.Windows.Forms.Button();
+            this.btn_suspend_wlc_data = new System.Windows.Forms.Button();
+            this.btn_suspenddatalist_wlc_data = new System.Windows.Forms.Button();
+            this.btn_insert_wlc_data = new System.Windows.Forms.Button();
+            this.btn_delete_wlc_data = new System.Windows.Forms.Button();
+            this.btn_deleteplan_wlc_data = new System.Windows.Forms.Button();
+            this.pnl_suspend_data_list_wlc_data = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_wlc_data)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,12 +123,83 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView_wlc_data.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView_wlc_data.RowHeadersVisible = false;
             this.dataGridView_wlc_data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_wlc_data.Size = new System.Drawing.Size(961, 576);
             this.dataGridView_wlc_data.TabIndex = 4;
             this.dataGridView_wlc_data.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_wlc_data_CellFormatting);
             this.dataGridView_wlc_data.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView_wlc_data_RowPostPaint);
+            // 
+            // seq
+            // 
+            this.seq.DataPropertyName = "[seq]";
+            this.seq.HeaderText = "";
+            this.seq.Name = "seq";
+            this.seq.ReadOnly = true;
+            this.seq.Visible = false;
+            this.seq.Width = 50;
+            // 
+            // pid
+            // 
+            this.pid.DataPropertyName = "pid";
+            this.pid.HeaderText = "PID";
+            this.pid.Name = "pid";
+            this.pid.ReadOnly = true;
+            // 
+            // vin
+            // 
+            this.vin.DataPropertyName = "vin";
+            this.vin.HeaderText = "VIN";
+            this.vin.Name = "vin";
+            this.vin.ReadOnly = true;
+            this.vin.Width = 150;
+            // 
+            // plan_date
+            // 
+            this.plan_date.DataPropertyName = "plan_date";
+            this.plan_date.HeaderText = "Plan Date";
+            this.plan_date.Name = "plan_date";
+            this.plan_date.ReadOnly = true;
+            this.plan_date.Width = 70;
+            // 
+            // wlc_code
+            // 
+            this.wlc_code.DataPropertyName = "wlc_code";
+            this.wlc_code.HeaderText = "WLC Code";
+            this.wlc_code.Name = "wlc_code";
+            this.wlc_code.ReadOnly = true;
+            this.wlc_code.Width = 70;
+            // 
+            // model_code
+            // 
+            this.model_code.DataPropertyName = "model_code";
+            this.model_code.HeaderText = "Model Code";
+            this.model_code.Name = "model_code";
+            this.model_code.ReadOnly = true;
+            this.model_code.Width = 70;
+            // 
+            // suffix
+            // 
+            this.suffix.DataPropertyName = "suffix";
+            this.suffix.HeaderText = "Suffix";
+            this.suffix.Name = "suffix";
+            this.suffix.ReadOnly = true;
+            this.suffix.Width = 70;
+            // 
+            // chassis_number
+            // 
+            this.chassis_number.DataPropertyName = "chassis_number";
+            this.chassis_number.HeaderText = "Chassis Number";
+            this.chassis_number.Name = "chassis_number";
+            this.chassis_number.ReadOnly = true;
+            this.chassis_number.Width = 150;
+            // 
+            // classification
+            // 
+            this.classification.DataPropertyName = "classification";
+            this.classification.HeaderText = "Classification";
+            this.classification.Name = "classification";
+            this.classification.ReadOnly = true;
+            this.classification.Width = 150;
             // 
             // btn_dataloading_wlc_data
             // 
@@ -210,76 +281,6 @@
             this.pnl_suspend_data_list_wlc_data.Name = "pnl_suspend_data_list_wlc_data";
             this.pnl_suspend_data_list_wlc_data.Size = new System.Drawing.Size(314, 574);
             this.pnl_suspend_data_list_wlc_data.TabIndex = 12;
-            // 
-            // seq
-            // 
-            this.seq.HeaderText = "";
-            this.seq.Name = "seq";
-            this.seq.ReadOnly = true;
-            this.seq.Width = 50;
-            // 
-            // pid
-            // 
-            this.pid.DataPropertyName = "pid";
-            this.pid.HeaderText = "PID";
-            this.pid.Name = "pid";
-            this.pid.ReadOnly = true;
-            // 
-            // vin
-            // 
-            this.vin.DataPropertyName = "vin";
-            this.vin.HeaderText = "VIN";
-            this.vin.Name = "vin";
-            this.vin.ReadOnly = true;
-            this.vin.Width = 150;
-            // 
-            // plan_date
-            // 
-            this.plan_date.DataPropertyName = "plan_date";
-            this.plan_date.HeaderText = "Plan Date";
-            this.plan_date.Name = "plan_date";
-            this.plan_date.ReadOnly = true;
-            this.plan_date.Width = 70;
-            // 
-            // wlc_code
-            // 
-            this.wlc_code.DataPropertyName = "wlc_code";
-            this.wlc_code.HeaderText = "WLC Code";
-            this.wlc_code.Name = "wlc_code";
-            this.wlc_code.ReadOnly = true;
-            this.wlc_code.Width = 70;
-            // 
-            // model_code
-            // 
-            this.model_code.DataPropertyName = "model_code";
-            this.model_code.HeaderText = "Model Code";
-            this.model_code.Name = "model_code";
-            this.model_code.ReadOnly = true;
-            this.model_code.Width = 70;
-            // 
-            // suffix
-            // 
-            this.suffix.DataPropertyName = "suffix";
-            this.suffix.HeaderText = "Suffix";
-            this.suffix.Name = "suffix";
-            this.suffix.ReadOnly = true;
-            this.suffix.Width = 70;
-            // 
-            // chassis_number
-            // 
-            this.chassis_number.DataPropertyName = "chassis_number";
-            this.chassis_number.HeaderText = "Chassis Number";
-            this.chassis_number.Name = "chassis_number";
-            this.chassis_number.ReadOnly = true;
-            this.chassis_number.Width = 150;
-            // 
-            // classification
-            // 
-            this.classification.DataPropertyName = "classification";
-            this.classification.HeaderText = "Classification";
-            this.classification.Name = "classification";
-            this.classification.ReadOnly = true;
-            this.classification.Width = 150;
             // 
             // form_wlc_data
             // 

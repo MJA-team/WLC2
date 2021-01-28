@@ -89,6 +89,7 @@
             this.btn_delete_suspend_data_list.TabIndex = 5;
             this.btn_delete_suspend_data_list.Text = "Delete";
             this.btn_delete_suspend_data_list.UseVisualStyleBackColor = true;
+            this.btn_delete_suspend_data_list.Click += new System.EventHandler(this.btn_delete_suspend_data_list_Click);
             // 
             // btn_cancel_suspend_data_list
             // 
@@ -141,7 +142,7 @@
         #endregion
         private System.Windows.Forms.Label lbl_suspend_data_list;
         private System.Windows.Forms.Label lbl_pid_suspend_data_list;
-        private System.Windows.Forms.Button btn_insert_after_suspend_data_list;
+        public System.Windows.Forms.Button btn_insert_after_suspend_data_list;
         private System.Windows.Forms.Button btn_insert_top_suspend_data_list;
         private System.Windows.Forms.Button btn_delete_suspend_data_list;
         private System.Windows.Forms.Button btn_cancel_suspend_data_list;

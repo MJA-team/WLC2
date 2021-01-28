@@ -8,7 +8,7 @@ namespace ADM_WLC
 {
     class GetText
     {
-        static string tb_pid, tb_vin, dtPicker, lb_wlc, tb_model, tb_suffix, tb_chassis;
+        static string tb_pid, tb_vin, dtPicker, lb_wlc, tb_model, tb_suffix, tb_chassis, lb_pid_suspend;
         public static string pid
         {
             get
@@ -84,6 +84,18 @@ namespace ADM_WLC
             set
             {
                 tb_chassis = value;
+            }
+        }
+
+        public static string lb_pid
+        {
+            get
+            {
+                return lb_pid_suspend;
+            }
+            set
+            {
+                lb_pid_suspend = value;
             }
         }
     }

@@ -40,8 +40,7 @@ namespace ADM_WLC
         {
             try
             {
-                Classification cl = Classification.Plan;
-                string classif = cl.ToString();
+                
                 string sequence = "";
                 string pid = tb_pid_insert.Text;
                 string vin = tb_vin_insert.Text;
@@ -51,6 +50,7 @@ namespace ADM_WLC
                 string model = tb_model_insert.Text;
                 string suffix = tb_suffix_insert.Text;
                 string chasis = tb_chassis_number.Text;
+                string classif = "Insert";
                 string Query = @"INSERT INTO wlc_data (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
                                    VALUES ('" + sequence + "', " +
                                           "'" + pid + "', " +

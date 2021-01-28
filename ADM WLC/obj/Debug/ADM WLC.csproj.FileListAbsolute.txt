@@ -95,10 +95,8 @@ D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\ADM WLC.exe
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\ADM WLC.pdb
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\EntityFramework.dll
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\EntityFramework.SqlServer.dll
-D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\PagedList.dll
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\EntityFramework.xml
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\EntityFramework.SqlServer.xml
-D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\PagedList.xml
 D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM_WLC.conv_result.form_enable_edit.resources
 D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM_WLC.conv_result.form_submit.resources
 D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM_WLC.conv_result.pid_list.resources
