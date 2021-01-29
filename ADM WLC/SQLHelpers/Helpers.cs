@@ -10,7 +10,7 @@ namespace ADM_WLC.SQLHelpers
 {
     public static class Helpers
     {
-        public static string connectionString = "Data Source=ADJIE007;Initial Catalog=adm_wlc;Integrated Security=True";
+        public static string connectionString = Properties.Settings.Default.connWlc;
 
         public static DataTable GetDatatable(string pQuery, int pTimeOut = 0)
         {

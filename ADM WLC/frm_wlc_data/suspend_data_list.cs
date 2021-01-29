@@ -95,33 +95,54 @@ namespace ADM_WLC
 
         private void btn_insert_top_suspend_data_list_Click(object sender, EventArgs e)
         {
-            LbSelect();
-            _form.InsertTopSuspend();
-            _form.DeleteRow();
-            _form.DeleteAll();
-            _form.Insert();
-            this.Close();
+            if (string.IsNullOrEmpty((string)lb_pid_suspend_data_list.SelectedItem))
+            {
+                MessageBox.Show("Please Select PID!!", "ADM WL/C");
+            }
+            else
+            {
+                LbSelect();
+                _form.InsertTopSuspend();
+                _form.DeleteRow();
+                _form.DeleteAll();
+                _form.Insert();
+                this.Close();
+            }
         }
 
         private void btn_insert_after_suspend_data_list_Click(object sender, EventArgs e)
         {
-            LbSelect();
-            _form.InsertAfterSuspend();
-            _form.DeleteRow();
-            _form.DeleteAll();
-            _form.Insert();
-            this.Close();
+            if (string.IsNullOrEmpty((string)lb_pid_suspend_data_list.SelectedItem))
+            {
+                MessageBox.Show("Please Select PID!!", "ADM WL/C");
+            }
+            else
+            {
+                LbSelect();
+                _form.InsertAfterSuspend();
+                _form.DeleteRow();
+                _form.DeleteAll();
+                _form.Insert();
+                this.Close();
+            }
         }
 
         private void btn_delete_suspend_data_list_Click(object sender, EventArgs e)
         {
-            ListPidSuspended();
-            DialogResult dialogResult = MessageBox.Show("Delete Suspended PID " + delPid + " ?", "ADM WL/C", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialogResult == DialogResult.Yes)
+            if (string.IsNullOrEmpty((string)lb_pid_suspend_data_list.SelectedItem))
             {
-                DelSelect();
-                _form.TampilAll();
-                this.Close();
+                MessageBox.Show("Please Select PID!!", "ADM WL/C");
+            }
+            else
+            {
+                ListPidSuspended();
+                DialogResult dialogResult = MessageBox.Show("Delete Suspended PID " + delPid + " ?", "ADM WL/C", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DelSelect();
+                    _form.TampilAll();
+                    this.Close();
+                }
             }
         }
     }

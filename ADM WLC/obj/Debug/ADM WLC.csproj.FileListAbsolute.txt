@@ -120,3 +120,7 @@ D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM WLC.csproj.CopyComplete
 D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM WLC.exe
 D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM WLC.pdb
 D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM WLC.csprojAssemblyReference.cache
+D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml
+D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml

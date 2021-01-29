@@ -49,6 +49,7 @@
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(178, 20);
             this.tb_password.TabIndex = 1;
+            this.tb_password.UseSystemPasswordChar = true;
             // 
             // btn_ok_password
             // 
@@ -60,6 +61,7 @@
             this.btn_ok_password.TabIndex = 21;
             this.btn_ok_password.Text = "OK";
             this.btn_ok_password.UseVisualStyleBackColor = true;
+            this.btn_ok_password.Click += new System.EventHandler(this.btn_ok_password_Click);
             // 
             // btn_cancel_password
             // 
@@ -73,7 +75,7 @@
             this.btn_cancel_password.UseVisualStyleBackColor = true;
             this.btn_cancel_password.Click += new System.EventHandler(this.btn_cancel_password_Click);
             // 
-            // form_password
+            // form_submit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -85,7 +87,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "form_password";
+            this.Name = "form_submit";
             this.ShowIcon = false;
             this.Text = "Password";
             this.ResumeLayout(false);

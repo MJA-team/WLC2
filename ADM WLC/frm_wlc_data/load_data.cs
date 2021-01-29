@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADM_WLC.SQLHelpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,30 @@ namespace ADM_WLC
     public partial class load_data : Form
     {
         private readonly form_wlc_data _form;
-        
+        private SqlConnection conn;
+
         public load_data(form_wlc_data form)
         {
             InitializeComponent();
             _form = form;
+        }
+
+        private void InsertTb()
+        {
+            try
+            {
+                string Query = @"INSERT INTO wlc_data SELECT * FROM wlc_data_temp";
+                conn = new SqlConnection();
+                conn.ConnectionString = Helpers.connectionString;
+                SqlCommand cmd = new SqlCommand(Query, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_cancel_load_data_Click(object sender, EventArgs e)
@@ -39,7 +59,8 @@ namespace ADM_WLC
 
         private void btn_loadall_load_data_Click(object sender, EventArgs e)
         {
-            _form.SaveAll();
+            InsertTb();
+            _form.DeleteTb_Temp();
             _form.TampilAll();
             this.Close();
         }
