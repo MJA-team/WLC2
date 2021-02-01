@@ -56,6 +56,7 @@
             this.btn_ok_password.TabIndex = 25;
             this.btn_ok_password.Text = "OK";
             this.btn_ok_password.UseVisualStyleBackColor = true;
+            this.btn_ok_password.Click += new System.EventHandler(this.btn_ok_password_Click);
             // 
             // tb_password
             // 
@@ -63,6 +64,8 @@
             this.tb_password.Name = "tb_password";
             this.tb_password.Size = new System.Drawing.Size(178, 20);
             this.tb_password.TabIndex = 24;
+            this.tb_password.UseSystemPasswordChar = true;
+            this.tb_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_password_KeyDown);
             // 
             // lbl_password
             // 

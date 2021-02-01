@@ -106,8 +106,8 @@ namespace ADM_WLC
                         string model = line.Substring(43, 4);
                         string suffix = line.Substring(47, 2);
                         string chasis = line.Substring(49, 19);
-                        string _2date = _1date.Insert(2, "/");
-                        string date = _2date.Insert(5, "/");
+                        string _2date = _1date.Insert(4, "/");
+                        string date = _2date.Insert(7, "/");
                         DateTime time = DateTime.Parse(date);
                         string _date = time.ToString("yyyy/MM/dd");
                         string Query = @"INSERT INTO wlc_data_temp (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 

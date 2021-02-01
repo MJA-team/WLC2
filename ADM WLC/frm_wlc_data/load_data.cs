@@ -44,6 +44,7 @@ namespace ADM_WLC
 
         private void btn_cancel_load_data_Click(object sender, EventArgs e)
         {
+            _form.DeleteTb_Temp();
             this.Close();
         }
 

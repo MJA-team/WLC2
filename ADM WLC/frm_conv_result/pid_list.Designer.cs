@@ -41,6 +41,7 @@
             this.lb_pid_list.Name = "lb_pid_list";
             this.lb_pid_list.Size = new System.Drawing.Size(280, 433);
             this.lb_pid_list.TabIndex = 0;
+            this.lb_pid_list.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lb_pid_list_DrawItem);
             // 
             // lbl_pid_list
             // 
@@ -73,6 +74,7 @@
             this.btn_ok_pid_list.TabIndex = 22;
             this.btn_ok_pid_list.Text = "OK";
             this.btn_ok_pid_list.UseVisualStyleBackColor = true;
+            this.btn_ok_pid_list.Click += new System.EventHandler(this.btn_ok_pid_list_Click);
             // 
             // pid_list
             // 
@@ -89,6 +91,7 @@
             this.Name = "pid_list";
             this.ShowIcon = false;
             this.Text = "PIDSelect";
+            this.Load += new System.EventHandler(this.pid_list_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

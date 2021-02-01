@@ -47,7 +47,7 @@
             this.textBox_chasisnumber_conv_result = new System.Windows.Forms.TextBox();
             this.textBox_sfx_conv_result = new System.Windows.Forms.TextBox();
             this.textBox_modelcode_conv_result = new System.Windows.Forms.TextBox();
-            this.textBox_wlccode = new System.Windows.Forms.TextBox();
+            this.textBox_wlccode_conv_result = new System.Windows.Forms.TextBox();
             this.textBox_vin_conv_result = new System.Windows.Forms.TextBox();
             this.textBox_pid_conv_result = new System.Windows.Forms.TextBox();
             this.btn_notyetstarted_conv_result = new System.Windows.Forms.Button();
@@ -170,7 +170,7 @@
             this.panel1.Controls.Add(this.textBox_chasisnumber_conv_result);
             this.panel1.Controls.Add(this.textBox_sfx_conv_result);
             this.panel1.Controls.Add(this.textBox_modelcode_conv_result);
-            this.panel1.Controls.Add(this.textBox_wlccode);
+            this.panel1.Controls.Add(this.textBox_wlccode_conv_result);
             this.panel1.Controls.Add(this.textBox_vin_conv_result);
             this.panel1.Controls.Add(this.textBox_pid_conv_result);
             this.panel1.Location = new System.Drawing.Point(2, 12);
@@ -234,43 +234,55 @@
             // 
             // textBox_chasisnumber_conv_result
             // 
+            this.textBox_chasisnumber_conv_result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.textBox_chasisnumber_conv_result.Location = new System.Drawing.Point(585, 26);
             this.textBox_chasisnumber_conv_result.Name = "textBox_chasisnumber_conv_result";
+            this.textBox_chasisnumber_conv_result.ReadOnly = true;
             this.textBox_chasisnumber_conv_result.Size = new System.Drawing.Size(255, 20);
             this.textBox_chasisnumber_conv_result.TabIndex = 23;
             // 
             // textBox_sfx_conv_result
             // 
+            this.textBox_sfx_conv_result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.textBox_sfx_conv_result.Location = new System.Drawing.Point(529, 26);
             this.textBox_sfx_conv_result.Name = "textBox_sfx_conv_result";
+            this.textBox_sfx_conv_result.ReadOnly = true;
             this.textBox_sfx_conv_result.Size = new System.Drawing.Size(50, 20);
             this.textBox_sfx_conv_result.TabIndex = 23;
             // 
             // textBox_modelcode_conv_result
             // 
+            this.textBox_modelcode_conv_result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.textBox_modelcode_conv_result.Location = new System.Drawing.Point(428, 26);
             this.textBox_modelcode_conv_result.Name = "textBox_modelcode_conv_result";
+            this.textBox_modelcode_conv_result.ReadOnly = true;
             this.textBox_modelcode_conv_result.Size = new System.Drawing.Size(95, 20);
             this.textBox_modelcode_conv_result.TabIndex = 3;
             // 
-            // textBox_wlccode
+            // textBox_wlccode_conv_result
             // 
-            this.textBox_wlccode.Location = new System.Drawing.Point(335, 26);
-            this.textBox_wlccode.Name = "textBox_wlccode";
-            this.textBox_wlccode.Size = new System.Drawing.Size(87, 20);
-            this.textBox_wlccode.TabIndex = 2;
+            this.textBox_wlccode_conv_result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBox_wlccode_conv_result.Location = new System.Drawing.Point(335, 26);
+            this.textBox_wlccode_conv_result.Name = "textBox_wlccode_conv_result";
+            this.textBox_wlccode_conv_result.ReadOnly = true;
+            this.textBox_wlccode_conv_result.Size = new System.Drawing.Size(87, 20);
+            this.textBox_wlccode_conv_result.TabIndex = 2;
             // 
             // textBox_vin_conv_result
             // 
+            this.textBox_vin_conv_result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.textBox_vin_conv_result.Location = new System.Drawing.Point(169, 26);
             this.textBox_vin_conv_result.Name = "textBox_vin_conv_result";
+            this.textBox_vin_conv_result.ReadOnly = true;
             this.textBox_vin_conv_result.Size = new System.Drawing.Size(160, 20);
             this.textBox_vin_conv_result.TabIndex = 1;
             // 
             // textBox_pid_conv_result
             // 
+            this.textBox_pid_conv_result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.textBox_pid_conv_result.Location = new System.Drawing.Point(3, 26);
             this.textBox_pid_conv_result.Name = "textBox_pid_conv_result";
+            this.textBox_pid_conv_result.ReadOnly = true;
             this.textBox_pid_conv_result.Size = new System.Drawing.Size(160, 20);
             this.textBox_pid_conv_result.TabIndex = 0;
             // 
@@ -376,7 +388,7 @@
         private System.Windows.Forms.TextBox textBox_chasisnumber_conv_result;
         private System.Windows.Forms.TextBox textBox_sfx_conv_result;
         private System.Windows.Forms.TextBox textBox_modelcode_conv_result;
-        private System.Windows.Forms.TextBox textBox_wlccode;
+        private System.Windows.Forms.TextBox textBox_wlccode_conv_result;
         private System.Windows.Forms.TextBox textBox_vin_conv_result;
         private System.Windows.Forms.TextBox textBox_pid_conv_result;
         private System.Windows.Forms.Button btn_notyetstarted_conv_result;

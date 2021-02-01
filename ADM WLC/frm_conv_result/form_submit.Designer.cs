@@ -50,6 +50,7 @@
             this.tb_password.Size = new System.Drawing.Size(178, 20);
             this.tb_password.TabIndex = 1;
             this.tb_password.UseSystemPasswordChar = true;
+            this.tb_password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_password_KeyDown);
             // 
             // btn_ok_password
             // 
