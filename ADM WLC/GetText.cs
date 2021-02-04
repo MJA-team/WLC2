@@ -8,7 +8,8 @@ namespace ADM_WLC
 {
     class GetText
     {
-        static string tb_pid, tb_vin, dtPicker, lb_wlc, tb_model, tb_suffix, tb_chassis, lb_pid_suspend, lb_pidlist, passsub, passedit;
+        static string tb_pid, tb_vin, dtPicker, lb_wlc, tb_model, tb_suffix, tb_chassis, lb_pid_suspend, lb_pidlist, passsub, passedit, datePickerStart, datePickerEnd, timePickerStart, timePickerEnd;
+
         public static string pid
         {
             get
@@ -20,6 +21,7 @@ namespace ADM_WLC
                 tb_pid = value;
             }
         }
+
         public static string vin
         {
             get
@@ -31,6 +33,7 @@ namespace ADM_WLC
                 tb_vin = value;
             }
         }
+
         public static string date
         {
             get
@@ -42,6 +45,7 @@ namespace ADM_WLC
                 dtPicker = value;
             }
         }
+
         public static string wlc
         {
             get
@@ -53,6 +57,7 @@ namespace ADM_WLC
                 lb_wlc = value;
             }
         }
+
         public static string model
         {
             get
@@ -64,6 +69,7 @@ namespace ADM_WLC
                 tb_model = value;
             }
         }
+
         public static string suffix
         {
             get
@@ -75,6 +81,7 @@ namespace ADM_WLC
                 tb_suffix = value;
             }
         }
+
         public static string chassis
         {
             get
@@ -132,6 +139,54 @@ namespace ADM_WLC
             set
             {
                 passedit = value;
+            }
+        }
+
+        public static string dateStart
+        {
+            get
+            {
+                return datePickerStart;
+            }
+            set
+            {
+                datePickerStart = value;
+            }
+        }
+
+        public static string dateEnd
+        {
+            get
+            {
+                return datePickerEnd;
+            }
+            set
+            {
+                datePickerEnd = value;
+            }
+        }
+
+        public static string timeStart
+        {
+            get
+            {
+                return timePickerStart;
+            }
+            set
+            {
+                timePickerStart = value;
+            }
+        }
+
+        public static string timeEnd
+        {
+            get
+            {
+                return timePickerEnd;
+            }
+            set
+            {
+                timePickerEnd = value;
             }
         }
     }
