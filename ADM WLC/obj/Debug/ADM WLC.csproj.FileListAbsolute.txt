@@ -124,3 +124,6 @@ D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml
 D:\Application\ADM-WLC - SQL\ADM WLC\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM_WLC.Insert.resources
+D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM_WLC.SaveDataRangeDialog.resources
+D:\Application\ADM-WLC - SQL\ADM WLC\obj\Debug\ADM_WLC.OrganizeData.resources

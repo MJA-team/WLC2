@@ -56,7 +56,6 @@ namespace ADM_WLC
                 btn_data_sending1.Hide();
             }
         }
-
     }
 
 }

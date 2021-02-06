@@ -28,36 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_start_stamping_result = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_refreh_stamping_result = new System.Windows.Forms.Button();
             this.btn_organizedata_stamping_result = new System.Windows.Forms.Button();
             this.btn_delete_stamping_result = new System.Windows.Forms.Button();
             this.btn_insert_stamping_result = new System.Windows.Forms.Button();
             this.btn_fivesave_stamping_result = new System.Windows.Forms.Button();
             this.dataGridView_stamping_result = new System.Windows.Forms.DataGridView();
-            this.lbl_end_stamping_result = new System.Windows.Forms.Label();
             this.btn_close_stamping_result = new System.Windows.Forms.Button();
-            this.lbl_initialvalue_stamping_result = new System.Windows.Forms.Label();
-            this.dateTimePicker_start_stamping_result = new System.Windows.Forms.DateTimePicker();
+            this.pnl_stamping_data = new System.Windows.Forms.Panel();
             this.dateTimePicker_end_stamping_result = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_start_stamping_result = new System.Windows.Forms.DateTimePicker();
+            this.lbl_initialvalue_stamping_result = new System.Windows.Forms.Label();
+            this.lbl_end_stamping_result = new System.Windows.Forms.Label();
+            this.lbl_start_stamping_result = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chassis_number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.add = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_stamping_result)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lbl_start_stamping_result
-            // 
-            this.lbl_start_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_start_stamping_result.AutoSize = true;
-            this.lbl_start_stamping_result.Location = new System.Drawing.Point(1150, 42);
-            this.lbl_start_stamping_result.Name = "lbl_start_stamping_result";
-            this.lbl_start_stamping_result.Size = new System.Drawing.Size(29, 13);
-            this.lbl_start_stamping_result.TabIndex = 60;
-            this.lbl_start_stamping_result.Text = "Start";
             // 
             // btn_refreh_stamping_result
             // 
@@ -80,6 +71,7 @@
             this.btn_organizedata_stamping_result.TabIndex = 57;
             this.btn_organizedata_stamping_result.Text = "Organize Data";
             this.btn_organizedata_stamping_result.UseVisualStyleBackColor = true;
+            this.btn_organizedata_stamping_result.Click += new System.EventHandler(this.btn_organizedata_stamping_result_Click);
             // 
             // btn_delete_stamping_result
             // 
@@ -91,6 +83,7 @@
             this.btn_delete_stamping_result.TabIndex = 56;
             this.btn_delete_stamping_result.Text = "Delete";
             this.btn_delete_stamping_result.UseVisualStyleBackColor = true;
+            this.btn_delete_stamping_result.Click += new System.EventHandler(this.btn_delete_stamping_result_Click);
             // 
             // btn_insert_stamping_result
             // 
@@ -102,6 +95,7 @@
             this.btn_insert_stamping_result.TabIndex = 55;
             this.btn_insert_stamping_result.Text = "Insert";
             this.btn_insert_stamping_result.UseVisualStyleBackColor = true;
+            this.btn_insert_stamping_result.Click += new System.EventHandler(this.btn_insert_stamping_result_Click);
             // 
             // btn_fivesave_stamping_result
             // 
@@ -113,35 +107,27 @@
             this.btn_fivesave_stamping_result.TabIndex = 54;
             this.btn_fivesave_stamping_result.Text = "File Save";
             this.btn_fivesave_stamping_result.UseVisualStyleBackColor = true;
+            this.btn_fivesave_stamping_result.Click += new System.EventHandler(this.btn_fivesave_stamping_result_Click);
             // 
             // dataGridView_stamping_result
             // 
+            this.dataGridView_stamping_result.AllowUserToAddRows = false;
             this.dataGridView_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView_stamping_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_stamping_result.ColumnHeadersHeight = 35;
+            this.dataGridView_stamping_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_stamping_result.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.date,
             this.time,
             this.pid,
-            this.chassis_number,
-            this.add,
-            this.dell});
+            this.chassis_number});
             this.dataGridView_stamping_result.Location = new System.Drawing.Point(3, 1);
             this.dataGridView_stamping_result.Name = "dataGridView_stamping_result";
-            this.dataGridView_stamping_result.Size = new System.Drawing.Size(1114, 623);
+            this.dataGridView_stamping_result.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_stamping_result.Size = new System.Drawing.Size(963, 623);
             this.dataGridView_stamping_result.TabIndex = 53;
             this.dataGridView_stamping_result.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView_stamping_result_RowPostPaint);
-            // 
-            // lbl_end_stamping_result
-            // 
-            this.lbl_end_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_end_stamping_result.AutoSize = true;
-            this.lbl_end_stamping_result.Location = new System.Drawing.Point(1153, 68);
-            this.lbl_end_stamping_result.Name = "lbl_end_stamping_result";
-            this.lbl_end_stamping_result.Size = new System.Drawing.Size(26, 13);
-            this.lbl_end_stamping_result.TabIndex = 62;
-            this.lbl_end_stamping_result.Text = "End";
             // 
             // btn_close_stamping_result
             // 
@@ -155,75 +141,106 @@
             this.btn_close_stamping_result.UseVisualStyleBackColor = true;
             this.btn_close_stamping_result.Click += new System.EventHandler(this.btn_close_stamping_result_Click);
             // 
-            // lbl_initialvalue_stamping_result
+            // pnl_stamping_data
             // 
-            this.lbl_initialvalue_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_initialvalue_stamping_result.AutoSize = true;
-            this.lbl_initialvalue_stamping_result.Location = new System.Drawing.Point(1150, 9);
-            this.lbl_initialvalue_stamping_result.Name = "lbl_initialvalue_stamping_result";
-            this.lbl_initialvalue_stamping_result.Size = new System.Drawing.Size(61, 13);
-            this.lbl_initialvalue_stamping_result.TabIndex = 65;
-            this.lbl_initialvalue_stamping_result.Text = "Initial Value";
-            // 
-            // dateTimePicker_start_stamping_result
-            // 
-            this.dateTimePicker_start_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker_start_stamping_result.CustomFormat = "hh:mm";
-            this.dateTimePicker_start_stamping_result.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_start_stamping_result.Location = new System.Drawing.Point(1188, 36);
-            this.dateTimePicker_start_stamping_result.Name = "dateTimePicker_start_stamping_result";
-            this.dateTimePicker_start_stamping_result.ShowUpDown = true;
-            this.dateTimePicker_start_stamping_result.Size = new System.Drawing.Size(85, 20);
-            this.dateTimePicker_start_stamping_result.TabIndex = 68;
-            this.dateTimePicker_start_stamping_result.Value = new System.DateTime(2020, 10, 19, 0, 0, 0, 0);
-            this.dateTimePicker_start_stamping_result.ValueChanged += new System.EventHandler(this.dateTimePicker_start_stamping_result_ValueChanged);
+            this.pnl_stamping_data.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnl_stamping_data.Location = new System.Drawing.Point(972, 90);
+            this.pnl_stamping_data.Name = "pnl_stamping_data";
+            this.pnl_stamping_data.Size = new System.Drawing.Size(314, 534);
+            this.pnl_stamping_data.TabIndex = 70;
             // 
             // dateTimePicker_end_stamping_result
             // 
             this.dateTimePicker_end_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker_end_stamping_result.CustomFormat = "hh:mm";
+            this.dateTimePicker_end_stamping_result.CustomFormat = "HH:mm";
             this.dateTimePicker_end_stamping_result.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_end_stamping_result.Location = new System.Drawing.Point(1188, 68);
+            this.dateTimePicker_end_stamping_result.Location = new System.Drawing.Point(1011, 64);
             this.dateTimePicker_end_stamping_result.Name = "dateTimePicker_end_stamping_result";
             this.dateTimePicker_end_stamping_result.ShowUpDown = true;
             this.dateTimePicker_end_stamping_result.Size = new System.Drawing.Size(85, 20);
-            this.dateTimePicker_end_stamping_result.TabIndex = 69;
-            this.dateTimePicker_end_stamping_result.Value = new System.DateTime(2020, 10, 19, 0, 0, 0, 0);
+            this.dateTimePicker_end_stamping_result.TabIndex = 79;
+            this.dateTimePicker_end_stamping_result.Value = new System.DateTime(2021, 2, 2, 23, 59, 0, 0);
             this.dateTimePicker_end_stamping_result.ValueChanged += new System.EventHandler(this.dateTimePicker_end_stamping_result_ValueChanged);
+            // 
+            // dateTimePicker_start_stamping_result
+            // 
+            this.dateTimePicker_start_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker_start_stamping_result.CustomFormat = "HH:mm";
+            this.dateTimePicker_start_stamping_result.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_start_stamping_result.Location = new System.Drawing.Point(1011, 32);
+            this.dateTimePicker_start_stamping_result.Name = "dateTimePicker_start_stamping_result";
+            this.dateTimePicker_start_stamping_result.ShowUpDown = true;
+            this.dateTimePicker_start_stamping_result.Size = new System.Drawing.Size(85, 20);
+            this.dateTimePicker_start_stamping_result.TabIndex = 78;
+            this.dateTimePicker_start_stamping_result.Value = new System.DateTime(2021, 2, 2, 0, 0, 0, 0);
+            this.dateTimePicker_start_stamping_result.ValueChanged += new System.EventHandler(this.dateTimePicker_start_stamping_result_ValueChanged);
+            // 
+            // lbl_initialvalue_stamping_result
+            // 
+            this.lbl_initialvalue_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_initialvalue_stamping_result.AutoSize = true;
+            this.lbl_initialvalue_stamping_result.Location = new System.Drawing.Point(973, 5);
+            this.lbl_initialvalue_stamping_result.Name = "lbl_initialvalue_stamping_result";
+            this.lbl_initialvalue_stamping_result.Size = new System.Drawing.Size(61, 13);
+            this.lbl_initialvalue_stamping_result.TabIndex = 77;
+            this.lbl_initialvalue_stamping_result.Text = "Initial Value";
+            // 
+            // lbl_end_stamping_result
+            // 
+            this.lbl_end_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_end_stamping_result.AutoSize = true;
+            this.lbl_end_stamping_result.Location = new System.Drawing.Point(976, 64);
+            this.lbl_end_stamping_result.Name = "lbl_end_stamping_result";
+            this.lbl_end_stamping_result.Size = new System.Drawing.Size(26, 13);
+            this.lbl_end_stamping_result.TabIndex = 76;
+            this.lbl_end_stamping_result.Text = "End";
+            // 
+            // lbl_start_stamping_result
+            // 
+            this.lbl_start_stamping_result.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_start_stamping_result.AutoSize = true;
+            this.lbl_start_stamping_result.Location = new System.Drawing.Point(973, 38);
+            this.lbl_start_stamping_result.Name = "lbl_start_stamping_result";
+            this.lbl_start_stamping_result.Size = new System.Drawing.Size(29, 13);
+            this.lbl_start_stamping_result.TabIndex = 75;
+            this.lbl_start_stamping_result.Text = "Start";
             // 
             // date
             // 
+            this.date.DataPropertyName = "date";
+            dataGridViewCellStyle1.NullValue = null;
+            this.date.DefaultCellStyle = dataGridViewCellStyle1;
             this.date.HeaderText = "Date";
             this.date.Name = "date";
+            this.date.ReadOnly = true;
             this.date.Width = 150;
             // 
             // time
             // 
+            this.time.DataPropertyName = "time";
+            dataGridViewCellStyle2.NullValue = null;
+            this.time.DefaultCellStyle = dataGridViewCellStyle2;
             this.time.HeaderText = "Time";
             this.time.Name = "time";
+            this.time.ReadOnly = true;
             this.time.Width = 150;
             // 
             // pid
             // 
+            this.pid.DataPropertyName = "pid";
             this.pid.HeaderText = "PID";
             this.pid.Name = "pid";
+            this.pid.ReadOnly = true;
             this.pid.Width = 250;
             // 
             // chassis_number
             // 
+            this.chassis_number.DataPropertyName = "chassis_number";
             this.chassis_number.HeaderText = "Chassis Number";
             this.chassis_number.Name = "chassis_number";
+            this.chassis_number.ReadOnly = true;
             this.chassis_number.Width = 250;
-            // 
-            // add
-            // 
-            this.add.HeaderText = "ADD";
-            this.add.Name = "add";
-            // 
-            // dell
-            // 
-            this.dell.HeaderText = "DELL";
-            this.dell.Name = "dell";
             // 
             // form_stamping_result
             // 
@@ -235,9 +252,10 @@
             this.Controls.Add(this.dateTimePicker_end_stamping_result);
             this.Controls.Add(this.dateTimePicker_start_stamping_result);
             this.Controls.Add(this.lbl_initialvalue_stamping_result);
-            this.Controls.Add(this.btn_close_stamping_result);
             this.Controls.Add(this.lbl_end_stamping_result);
             this.Controls.Add(this.lbl_start_stamping_result);
+            this.Controls.Add(this.pnl_stamping_data);
+            this.Controls.Add(this.btn_close_stamping_result);
             this.Controls.Add(this.btn_refreh_stamping_result);
             this.Controls.Add(this.btn_organizedata_stamping_result);
             this.Controls.Add(this.btn_delete_stamping_result);
@@ -258,24 +276,22 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbl_start_stamping_result;
         private System.Windows.Forms.Button btn_refreh_stamping_result;
         private System.Windows.Forms.Button btn_organizedata_stamping_result;
         private System.Windows.Forms.Button btn_delete_stamping_result;
         private System.Windows.Forms.Button btn_insert_stamping_result;
         private System.Windows.Forms.Button btn_fivesave_stamping_result;
         private System.Windows.Forms.DataGridView dataGridView_stamping_result;
-        private System.Windows.Forms.Label lbl_end_stamping_result;
         private System.Windows.Forms.Button btn_close_stamping_result;
-        private System.Windows.Forms.Label lbl_initialvalue_stamping_result;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_start_stamping_result;
+        private System.Windows.Forms.Panel pnl_stamping_data;
         private System.Windows.Forms.DateTimePicker dateTimePicker_end_stamping_result;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_start_stamping_result;
+        private System.Windows.Forms.Label lbl_initialvalue_stamping_result;
+        private System.Windows.Forms.Label lbl_end_stamping_result;
+        private System.Windows.Forms.Label lbl_start_stamping_result;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn chassis_number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn add;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dell;
     }
 }
