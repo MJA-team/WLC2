@@ -117,7 +117,7 @@ namespace ADM_WLC
             {
                 _form.CreateSR_Temp();
                 InsertSR_temp();
-                ValidationSR();
+                InsertSR();
                 _form.DeleteSR_Temp();
                 _form.TampilAll();
                 this.Close();

@@ -126,6 +126,7 @@
             this.dataGridView_wlc_data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_wlc_data.Size = new System.Drawing.Size(961, 576);
             this.dataGridView_wlc_data.TabIndex = 4;
+            this.dataGridView_wlc_data.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_wlc_data_CellClick);
             this.dataGridView_wlc_data.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_wlc_data_CellFormatting);
             this.dataGridView_wlc_data.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView_wlc_data_RowPostPaint);
             // 
@@ -319,7 +320,7 @@
         private System.Windows.Forms.Button btn_insert_wlc_data;
         private System.Windows.Forms.Button btn_delete_wlc_data;
         private System.Windows.Forms.Button btn_deleteplan_wlc_data;
-        private System.Windows.Forms.Panel pnl_suspend_data_list_wlc_data;
+        public System.Windows.Forms.Panel pnl_suspend_data_list_wlc_data;
         private System.Windows.Forms.DataGridViewTextBoxColumn seq;
         private System.Windows.Forms.DataGridViewTextBoxColumn pid;
         private System.Windows.Forms.DataGridViewTextBoxColumn vin;

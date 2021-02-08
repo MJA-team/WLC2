@@ -314,7 +314,8 @@ namespace ADM_WLC
         public void InsertTop()
         {
             form_insert f = new form_insert(this);
-            int index = dataGridView_wlc_data.Rows[0].Index;
+            //int index = dataGridView_wlc_data.Rows[0].Index;
+            int index = dataGridView_wlc_data.SelectedRows[0].Index;
             bool Itemfound = false;
             if (dataGridView_wlc_data.Rows.Count > 0)
             {
@@ -361,7 +362,10 @@ namespace ADM_WLC
 
                 while (drt.Read())
                 {
-                    dr[0] = (drt["pid"]);
+                    string _1pid = (string)(drt["pid"]);
+                    string _pid = _1pid.Substring(2,8);
+
+                    dr[0] = "F1" + _pid;
                     dr[1] = (drt["vin"]);
                     dr[2] = (drt["plan_date"]);
                     dr[3] = (drt["wlc_code"]);
@@ -384,7 +388,8 @@ namespace ADM_WLC
             try
             {
                 suspend_data_list f = new suspend_data_list(this);
-                int index = dataGridView_wlc_data.Rows[0].Index;
+                //int index = dataGridView_wlc_data.Rows[0].Index;
+                int index = dataGridView_wlc_data.SelectedRows[0].Index;
                 DataRow dr = dt.NewRow();
                 string Query = @"SELECT * FROM wlc_data WHERE pid = '" + GetText.lb_pid + "'";
                 conn = new SqlConnection();
@@ -396,7 +401,10 @@ namespace ADM_WLC
 
                 while (drt.Read())
                 {
-                    dr[0] = (drt["pid"]);
+                    string _1pid = (string)(drt["pid"]);
+                    string _pid = _1pid.Substring(2, 8);
+
+                    dr[0] = "F1" + _pid;
                     dr[1] = (drt["vin"]);
                     dr[2] = (drt["plan_date"]);
                     dr[3] = (drt["wlc_code"]);
@@ -412,7 +420,6 @@ namespace ADM_WLC
             {
                 MessageBox.Show(ex.Message);
             }
-    
         }
 
         public void DeleteRow()
@@ -424,6 +431,32 @@ namespace ADM_WLC
                     dataGridView_wlc_data.Rows.Remove(DeleteItem);
                 }
             }
+        }
+
+        private void OpenInsertForm()
+        {
+            pnl_suspend_data_list_wlc_data.Controls.Clear();
+            form_insert f = new form_insert(this);
+            f.TopLevel = false;
+            pnl_suspend_data_list_wlc_data.Controls.Add(f);
+            TextInsert();
+            f.Show();
+        }
+
+        private void OpenSuspedForm()
+        {
+            pnl_suspend_data_list_wlc_data.Controls.Clear();
+            suspend_data_list f = new suspend_data_list(this);
+            f.TopLevel = false;
+            pnl_suspend_data_list_wlc_data.Controls.Add(f);
+            TextInsert();
+            f.Show();
+        }
+
+        private void TextInsert()
+        {
+            SelectedRow();
+            GetText.txtinsert = "Insert After " + id;
         }
 
         private void form_wlc_data_Load(object sender, EventArgs e)
@@ -469,13 +502,7 @@ namespace ADM_WLC
 
         private void btn_insert_wlc_data_Click(object sender, EventArgs e)
         {
-            SelectedRow();
-            pnl_suspend_data_list_wlc_data.Controls.Clear();
-            form_insert f = new form_insert(this);
-            f.TopLevel = false;
-            pnl_suspend_data_list_wlc_data.Controls.Add(f);
-            f.btn_insert_after_insert.Text = "Insert After " + id;
-            f.Show();
+            OpenInsertForm();
         }
 
         private void dataGridView_wlc_data_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -554,10 +581,13 @@ namespace ADM_WLC
             {
                 try
                 {
-                    SelectedRow();
-                    string Query = @"UPDATE wlc_data SET classification = 'Delete' WHERE pid = '" + id + "'";
-                    dt = new DataTable();
-                    dt = Helpers.GetDatatable(Query);
+                    string Query = @"DELETE FROM wlc_data WHERE classification = 'Plan'";
+                    conn = new SqlConnection();
+                    conn.ConnectionString = Helpers.connectionString;
+                    SqlCommand cmd = new SqlCommand(Query, conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                     TampilAll();
                 }
                 catch (Exception ex)
@@ -569,13 +599,12 @@ namespace ADM_WLC
 
         private void btn_suspenddatalist_wlc_data_Click(object sender, EventArgs e)
         {
-            SelectedRow();
-            pnl_suspend_data_list_wlc_data.Controls.Clear();
-            suspend_data_list f = new suspend_data_list(this);
-            f.TopLevel = false;
-            pnl_suspend_data_list_wlc_data.Controls.Add(f);
-            f.btn_insert_after_suspend_data_list.Text = "Insert After " + id;
-            f.Show();
+            OpenSuspedForm();
+        }
+
+        private void dataGridView_wlc_data_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TextInsert();
         }
     }
 }

@@ -1,13 +1,6 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ADM_WLC
@@ -169,6 +162,24 @@ namespace ADM_WLC
                     this.Close();
                 }
             }
+        }
+
+        private void form_insert_Load(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            timer1.Interval = 100;
+            timer1.Tick += new System.EventHandler(timer_Tick);
+            timer1.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        { 
+            RefreshMyForm();
+        }
+
+        private void RefreshMyForm()
+        {
+            btn_insert_after_insert.Text = GetText.txtinsert;
         }
     }
 }
