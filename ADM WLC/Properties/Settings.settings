@@ -21,5 +21,8 @@
     <Setting Name="connWlc" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=MJANAWILAPTOP\NAWI2019DB;Initial Catalog=adm_wlc;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="LogicalStationNumber" Type="System.String" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
