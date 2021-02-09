@@ -24,7 +24,7 @@ namespace ADM_WLC
             int numb = Convert.ToInt32(tb_numb_data_specified.Text);
             try
             {
-                string Query = @"INSERT INTO wlc_data SELECT TOP " + numb + " * FROM wlc_data_temp";
+                string Query = @"INSERT INTO wlc_data SELECT * FROM wlc_data_temp LIMIT '" + numb + "'";
                 conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
                 SQLiteCommand cmd = new SQLiteCommand(Query, conn);

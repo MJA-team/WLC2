@@ -23,7 +23,7 @@ namespace ADM_WLC
         {
             GetText.pid = tb_pid_insert.Text;
             GetText.vin = tb_vin_insert.Text;
-            GetText.date = dtPicker.Value.ToString("yyyy/MM/dd");
+            GetText.date = dtPicker.Value.ToString("yyyy-MM-dd");
             GetText.wlc = (string)lb_wlc_code_insert.SelectedItem;
             GetText.model = tb_model_insert.Text;
             GetText.suffix = tb_suffix_insert.Text;
@@ -34,12 +34,11 @@ namespace ADM_WLC
         {
             try
             {
-                
                 string sequence = "";
                 string pid = tb_pid_insert.Text;
                 string vin = tb_vin_insert.Text;
                 DateTime date = dtPicker.Value.Date;
-                string _date = date.ToString("yyyy/MM/dd");
+                string _date = date.ToString("yyyy-MM-dd");
                 string wlc = (string)lb_wlc_code_insert.SelectedItem;
                 string model = tb_model_insert.Text;
                 string suffix = tb_suffix_insert.Text;
@@ -121,7 +120,6 @@ namespace ADM_WLC
 
         private void btn_insert_after_insert_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrEmpty(tb_pid_insert.Text))
             {
                 MessageBox.Show("PID Cannot be empty", "ADM WL/C");

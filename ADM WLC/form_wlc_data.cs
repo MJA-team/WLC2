@@ -59,7 +59,7 @@ namespace ADM_WLC
         {
             try
             {
-                string Query = @"CREATE TABLE [adm_wlc].[dbo].[wlc_data_temp](
+                string Query = @"CREATE TABLE wlc_data_temp(
 	                               [seq] INT
                                   ,[pid] VARCHAR(50)
                                   ,[vin] VARCHAR(50)
@@ -103,10 +103,10 @@ namespace ADM_WLC
                         string model = line.Substring(43, 4);
                         string suffix = line.Substring(47, 2);
                         string chasis = line.Substring(49, 19);
-                        string _2date = _1date.Insert(4, "/");
-                        string date = _2date.Insert(7, "/");
+                        string _2date = _1date.Insert(4, "-");
+                        string date = _2date.Insert(7, "-");
                         DateTime time = DateTime.Parse(date);
-                        string _date = time.ToString("yyyy/MM/dd");
+                        string _date = time.ToString("yyyy-MM-dd");
                         string Query = @"INSERT INTO wlc_data_temp (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
                                         VALUES ('" + sequence + "', " +
                                                     "'" + pid + "', " +
@@ -174,7 +174,7 @@ namespace ADM_WLC
         {
             try
             {
-                string Query = @"DROP TABLE [adm_wlc].[dbo].[wlc_data_temp]";
+                string Query = @"DROP TABLE wlc_data_temp";
                 conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
                 SQLiteCommand cmd = new SQLiteCommand(Query, conn);
@@ -242,7 +242,7 @@ namespace ADM_WLC
                     string pid = (string)dataGridView_wlc_data.Rows[i].Cells[1].Value;
                     string vin = (string)dataGridView_wlc_data.Rows[i].Cells[2].Value;
                     DateTime date = Convert.ToDateTime(dataGridView_wlc_data.Rows[i].Cells[3].Value);
-                    string _date = date.ToString("yyyy/MM/dd");
+                    string _date = date.ToString("yyyy-MM-dd");
                     string wlc = (string)dataGridView_wlc_data.Rows[i].Cells[4].Value;
                     string model = (string)dataGridView_wlc_data.Rows[i].Cells[5].Value;
                     string suffix = (string)dataGridView_wlc_data.Rows[i].Cells[6].Value;
