@@ -1,13 +1,8 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace ADM_WLC
@@ -15,7 +10,7 @@ namespace ADM_WLC
     public partial class Insert : Form
     {
         private readonly form_stamping_result _form;
-        private SqlConnection conn;
+        private SQLiteConnection conn;
         private DataTable dt;
 
         public Insert(form_stamping_result form)
@@ -38,9 +33,9 @@ namespace ADM_WLC
                                                                   "'" + endDate + "'," +
                                                                   "'" + pid + "'," +
                                                                   "'" + chassis + "')";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -56,9 +51,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"INSERT INTO stamping_result SELECT * FROM stamping_result_temp";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();

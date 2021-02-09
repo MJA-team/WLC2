@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace ADM_WLC.conv_result
@@ -38,6 +37,11 @@ namespace ADM_WLC.conv_result
                 _form.PassSubmit();
                 this.Close();
             }
+        }
+
+        private void form_submit_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

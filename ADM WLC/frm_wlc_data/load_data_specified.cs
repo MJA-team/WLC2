@@ -1,13 +1,7 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace ADM_WLC
@@ -15,7 +9,7 @@ namespace ADM_WLC
     public partial class load_data_specified : Form
     {
         private readonly form_wlc_data _form;
-        private SqlConnection conn;
+        private SQLiteConnection conn;
 
         public load_data_specified(form_wlc_data form)
         {
@@ -31,9 +25,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"INSERT INTO wlc_data SELECT TOP " + numb + " * FROM wlc_data_temp";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();

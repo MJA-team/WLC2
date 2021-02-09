@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace ADM_WLC
     public partial class form_process_table : Form
     {
         DataTable dt;
-        SqlConnection conn;
+        SQLiteConnection conn;
 
         public form_process_table()
         {
@@ -171,9 +172,9 @@ namespace ADM_WLC
                                     "cut_off ='" + col9 + "'," +
                                     "memo ='" + col10 + "'" +
                                     "WHERE id ='" + id + "'";
-                    conn = new SqlConnection();
+                    conn = new SQLiteConnection();
                     conn.ConnectionString = Helpers.connectionString;
-                    SqlCommand cmd = new SqlCommand(Query, conn);
+                    SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -330,9 +331,9 @@ namespace ADM_WLC
                                    "cut_off ='" + cut_off + "'," +
                                    "memo ='" + memo + "'" +
                                    "WHERE id ='" + id + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();

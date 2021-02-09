@@ -122,6 +122,7 @@
             this.Name = "model_code";
             this.ShowIcon = false;
             this.Text = "Model Code";
+            this.Load += new System.EventHandler(this.model_code_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_model_code)).EndInit();
             this.ResumeLayout(false);
 

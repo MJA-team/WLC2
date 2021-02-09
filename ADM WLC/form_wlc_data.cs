@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using ADM_WLC.SQLHelpers;
 
 namespace ADM_WLC
 {
     public partial class form_wlc_data : Form
     {
-        private SqlConnection conn;
-        private SqlDataReader drt;
+        private SQLiteConnection conn;
+        private SQLiteDataReader drt;
         private DataTable dt;
         public static OpenFileDialog ofd;
         string line = "";
@@ -72,9 +69,9 @@ namespace ADM_WLC
                                   ,[suffix] VARCHAR(50)
                                   ,[chassis_number] VARCHAR(50)
                                   ,[classification] VARCHAR(50))";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -121,9 +118,9 @@ namespace ADM_WLC
                                                     "'" + chasis + "'," +
                                                     "'" + classif + "')";
 
-                        conn = new SqlConnection();
+                        conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
-                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -178,9 +175,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"DROP TABLE [adm_wlc].[dbo].[wlc_data_temp]";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -204,9 +201,9 @@ namespace ADM_WLC
                     if (oneRow.Selected)
                     {
                         string Query = @"DELETE wlc_data WHERE pid ='" + id + "'";
-                        conn = new SqlConnection();
+                        conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
-                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -221,9 +218,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"DELETE FROM wlc_data";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -262,9 +259,9 @@ namespace ADM_WLC
                                                 "'" + chasis + "'," +
                                                 "'" + classif + "')";
 
-                        conn = new SqlConnection();
+                        conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
-                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -353,9 +350,9 @@ namespace ADM_WLC
                 int idx = index + 1;
                 DataRow dr = dt.NewRow();
                 string Query = @"SELECT * FROM wlc_data WHERE pid = '" + GetText.lb_pid + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 drt = cmd.ExecuteReader();
@@ -392,9 +389,9 @@ namespace ADM_WLC
                 int index = dataGridView_wlc_data.SelectedRows[0].Index;
                 DataRow dr = dt.NewRow();
                 string Query = @"SELECT * FROM wlc_data WHERE pid = '" + GetText.lb_pid + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 drt = cmd.ExecuteReader();
@@ -582,9 +579,9 @@ namespace ADM_WLC
                 try
                 {
                     string Query = @"DELETE FROM wlc_data WHERE classification = 'Plan'";
-                    conn = new SqlConnection();
+                    conn = new SQLiteConnection();
                     conn.ConnectionString = Helpers.connectionString;
-                    SqlCommand cmd = new SqlCommand(Query, conn);
+                    SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();

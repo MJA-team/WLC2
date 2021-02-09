@@ -1,6 +1,7 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace ADM_WLC
@@ -8,7 +9,7 @@ namespace ADM_WLC
     public partial class form_insert : Form
     {
         private readonly form_wlc_data _form;
-        private SqlConnection conn;
+        private SQLiteConnection conn;
 
         public enum Classification { Plan = 0, SendPLC = 1, Insert = 2, Delete = 3, Suspended = 4 };
 
@@ -55,9 +56,9 @@ namespace ADM_WLC
                                           "'" + chasis + "'," +
                                           "'" + classif + "')";
 
-                    conn = new SqlConnection();
+                    conn = new SQLiteConnection();
                     conn.ConnectionString = Helpers.connectionString;
-                    SqlCommand cmd = new SqlCommand(Query, conn);
+                    SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
