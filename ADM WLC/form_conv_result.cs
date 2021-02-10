@@ -17,6 +17,7 @@ namespace ADM_WLC
         private SQLiteConnection conn;
         private SQLiteDataReader dr;
         string pass;
+
         private string valid = "FFyIPbfu0qhn7+vt6MRbu5otTkWhNcbFqUTnMHPk34E="; //Password : 123456
 
         public form_conv_result()

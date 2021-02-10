@@ -113,7 +113,7 @@ namespace ADM_WLC
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-            btn_stamping_result.Enabled = false;
+            btn_stamping_result.Visible = false;
         }
     }
 }

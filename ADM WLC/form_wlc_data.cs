@@ -200,7 +200,7 @@ namespace ADM_WLC
                 {
                     if (oneRow.Selected)
                     {
-                        string Query = @"DELETE wlc_data WHERE pid ='" + id + "'";
+                        string Query = @"DELETE FROM wlc_data WHERE pid ='" + id + "'";
                         conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
                         SQLiteCommand cmd = new SQLiteCommand(Query, conn);
