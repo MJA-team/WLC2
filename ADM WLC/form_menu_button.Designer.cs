@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_process_status = new System.Windows.Forms.Button();
             this.btn_stamping_result = new System.Windows.Forms.Button();
+            this.btn_prod_inst = new System.Windows.Forms.Button();
             this.btn_process_table = new System.Windows.Forms.Button();
+            this.btn_process_status = new System.Windows.Forms.Button();
             this.btn_wlc_maintenance = new System.Windows.Forms.Button();
             this.btn_conv_result = new System.Windows.Forms.Button();
-            this.btn_prod_inst = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,49 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1287, 684);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // btn_stamping_result
+            // 
+            this.btn_stamping_result.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btn_stamping_result.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_stamping_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_stamping_result.Location = new System.Drawing.Point(747, 530);
+            this.btn_stamping_result.Name = "btn_stamping_result";
+            this.btn_stamping_result.Size = new System.Drawing.Size(458, 79);
+            this.btn_stamping_result.TabIndex = 40;
+            this.btn_stamping_result.Text = "6: Stamping Result Data Maintenance";
+            this.btn_stamping_result.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_stamping_result.UseVisualStyleBackColor = false;
+            this.btn_stamping_result.Click += new System.EventHandler(this.btn_stamping_result_Click);
+            // 
+            // btn_prod_inst
+            // 
+            this.btn_prod_inst.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btn_prod_inst.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_prod_inst.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_prod_inst.Location = new System.Drawing.Point(747, 74);
+            this.btn_prod_inst.Name = "btn_prod_inst";
+            this.btn_prod_inst.Size = new System.Drawing.Size(458, 79);
+            this.btn_prod_inst.TabIndex = 37;
+            this.btn_prod_inst.Text = "4: [Master Setting] Production Intruction Code";
+            this.btn_prod_inst.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_prod_inst.UseVisualStyleBackColor = false;
+            this.btn_prod_inst.Click += new System.EventHandler(this.btn_prod_inst_Click);
+            // 
+            // btn_process_table
+            // 
+            this.btn_process_table.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btn_process_table.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_process_table.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_process_table.Location = new System.Drawing.Point(747, 302);
+            this.btn_process_table.Name = "btn_process_table";
+            this.btn_process_table.Size = new System.Drawing.Size(458, 79);
+            this.btn_process_table.TabIndex = 39;
+            this.btn_process_table.Text = "5: [Master Setting] Process Table";
+            this.btn_process_table.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_process_table.UseVisualStyleBackColor = false;
+            this.btn_process_table.Click += new System.EventHandler(this.btn_process_table_Click);
             // 
             // btn_process_status
             // 
@@ -76,40 +119,12 @@
             this.btn_process_status.UseVisualStyleBackColor = false;
             this.btn_process_status.Click += new System.EventHandler(this.btn_process_status_Click);
             // 
-            // btn_stamping_result
-            // 
-            this.btn_stamping_result.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btn_stamping_result.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_stamping_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_stamping_result.Location = new System.Drawing.Point(747, 529);
-            this.btn_stamping_result.Name = "btn_stamping_result";
-            this.btn_stamping_result.Size = new System.Drawing.Size(458, 79);
-            this.btn_stamping_result.TabIndex = 40;
-            this.btn_stamping_result.Text = "6: Stamping Result Data Maintenance";
-            this.btn_stamping_result.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_stamping_result.UseVisualStyleBackColor = false;
-            this.btn_stamping_result.Click += new System.EventHandler(this.btn_stamping_result_Click);
-            // 
-            // btn_process_table
-            // 
-            this.btn_process_table.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btn_process_table.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_process_table.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_process_table.Location = new System.Drawing.Point(747, 301);
-            this.btn_process_table.Name = "btn_process_table";
-            this.btn_process_table.Size = new System.Drawing.Size(458, 79);
-            this.btn_process_table.TabIndex = 39;
-            this.btn_process_table.Text = "5: [Master Setting] Process Table";
-            this.btn_process_table.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_process_table.UseVisualStyleBackColor = false;
-            this.btn_process_table.Click += new System.EventHandler(this.btn_process_table_Click);
-            // 
             // btn_wlc_maintenance
             // 
             this.btn_wlc_maintenance.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_wlc_maintenance.BackColor = System.Drawing.SystemColors.Control;
             this.btn_wlc_maintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_wlc_maintenance.Location = new System.Drawing.Point(81, 301);
+            this.btn_wlc_maintenance.Location = new System.Drawing.Point(81, 302);
             this.btn_wlc_maintenance.Name = "btn_wlc_maintenance";
             this.btn_wlc_maintenance.Size = new System.Drawing.Size(458, 79);
             this.btn_wlc_maintenance.TabIndex = 38;
@@ -123,7 +138,7 @@
             this.btn_conv_result.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.btn_conv_result.BackColor = System.Drawing.SystemColors.Control;
             this.btn_conv_result.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_conv_result.Location = new System.Drawing.Point(81, 529);
+            this.btn_conv_result.Location = new System.Drawing.Point(81, 530);
             this.btn_conv_result.Name = "btn_conv_result";
             this.btn_conv_result.Size = new System.Drawing.Size(458, 79);
             this.btn_conv_result.TabIndex = 36;
@@ -131,20 +146,6 @@
             this.btn_conv_result.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_conv_result.UseVisualStyleBackColor = false;
             this.btn_conv_result.Click += new System.EventHandler(this.btn_conv_result_Click);
-            // 
-            // btn_prod_inst
-            // 
-            this.btn_prod_inst.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btn_prod_inst.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_prod_inst.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_prod_inst.Location = new System.Drawing.Point(747, 74);
-            this.btn_prod_inst.Name = "btn_prod_inst";
-            this.btn_prod_inst.Size = new System.Drawing.Size(458, 79);
-            this.btn_prod_inst.TabIndex = 37;
-            this.btn_prod_inst.Text = "4: [Master Setting] Production Intruction Code";
-            this.btn_prod_inst.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_prod_inst.UseVisualStyleBackColor = false;
-            this.btn_prod_inst.Click += new System.EventHandler(this.btn_prod_inst_Click);
             // 
             // form_menu_button
             // 

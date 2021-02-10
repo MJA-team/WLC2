@@ -1,13 +1,7 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace ADM_WLC.conv_result
@@ -15,8 +9,8 @@ namespace ADM_WLC.conv_result
     public partial class pid_list : Form
     {
         private readonly form_conv_result _form;
-        private SqlConnection conn;
-        private SqlDataReader dr;
+        private SQLiteConnection conn;
+        private SQLiteDataReader dr;
 
         public pid_list(form_conv_result form)
         {
@@ -29,9 +23,9 @@ namespace ADM_WLC.conv_result
             try
             {
                 string Query = @"SELECT pid FROM wlc_data";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 dr = cmd.ExecuteReader();
