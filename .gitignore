@@ -14,22 +14,22 @@
 *.userprefs
 
 # Mono auto generated files
-ADM WLC/mono_crash.*
+mono_crash.*
 
 # Build results
-ADM WLC/[Dd]ebug/
-ADM WLC/[Dd]ebugPublic/
-ADM WLC/[Rr]elease/
-ADM WLC/[Rr]eleases/
-ADM WLC/x64/
-ADM WLC/x86/
-ADM WLC/[Aa][Rr][Mm]/
-ADM WLC/[Aa][Rr][Mm]64/
-ADM WLC/bld/
-ADM WLC/[Bb]in/
-ADM WLC/[Oo]bj/
-ADM WLC/[Ll]og/
-ADM WLC/[Ll]ogs/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
