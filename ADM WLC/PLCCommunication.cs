@@ -719,6 +719,14 @@ namespace ADM_WLC
             //return dta;
         }
 
+        public static UInt16 BytesToUInt16(Byte B1, Byte B2)
+        {
+            UInt16 value = B1;
+            value <<= 8;
+            value += Convert.ToUInt16(B2);
+            return value;
+        }
+
         #endregion
 
         #region **** event
