@@ -29,13 +29,7 @@ namespace ADM_WLC
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.stamp_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.before_last_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.first_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.last_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.last_data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.last_no_1st_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView_organizedata = new System.Windows.Forms.DataGridView();
             this.timePicker_enddate_organizedata = new System.Windows.Forms.DateTimePicker();
             this.timePicker_startdate_organizedata = new System.Windows.Forms.DateTimePicker();
             this.datePicker_enddate_organizedata = new System.Windows.Forms.DateTimePicker();
@@ -43,54 +37,30 @@ namespace ADM_WLC
             this.datePicker_startdate_organizedata = new System.Windows.Forms.DateTimePicker();
             this.lbl_startdate_organizedata = new System.Windows.Forms.Label();
             this.btn_refresh_organizedata = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.stamp_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.before_last_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.first_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.last_frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.last_data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.last_no_1st_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_organizedata)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridView_organizedata
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridView_organizedata.AllowUserToAddRows = false;
+            this.dataGridView_organizedata.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_organizedata.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.stamp_type,
             this.before_last_frame,
             this.first_frame,
             this.last_frame,
             this.last_data,
             this.last_no_1st_no});
-            this.dataGridView1.Location = new System.Drawing.Point(-2, 102);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(803, 691);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // stamp_type
-            // 
-            this.stamp_type.HeaderText = "Stamp Type";
-            this.stamp_type.Name = "stamp_type";
-            this.stamp_type.ReadOnly = true;
-            // 
-            // before_last_frame
-            // 
-            this.before_last_frame.HeaderText = "Before Last";
-            this.before_last_frame.Name = "before_last_frame";
-            // 
-            // first_frame
-            // 
-            this.first_frame.HeaderText = "First";
-            this.first_frame.Name = "first_frame";
-            // 
-            // last_frame
-            // 
-            this.last_frame.HeaderText = "Last";
-            this.last_frame.Name = "last_frame";
-            // 
-            // last_data
-            // 
-            this.last_data.HeaderText = "Last";
-            this.last_data.Name = "last_data";
-            // 
-            // last_no_1st_no
-            // 
-            this.last_no_1st_no.HeaderText = "Last No";
-            this.last_no_1st_no.Name = "last_no_1st_no";
+            this.dataGridView_organizedata.Location = new System.Drawing.Point(1, 102);
+            this.dataGridView_organizedata.Name = "dataGridView_organizedata";
+            this.dataGridView_organizedata.Size = new System.Drawing.Size(797, 691);
+            this.dataGridView_organizedata.TabIndex = 0;
             // 
             // timePicker_enddate_organizedata
             // 
@@ -160,11 +130,43 @@ namespace ADM_WLC
             this.btn_refresh_organizedata.Text = "Refresh";
             this.btn_refresh_organizedata.UseVisualStyleBackColor = true;
             // 
+            // stamp_type
+            // 
+            this.stamp_type.HeaderText = "Stamp Type";
+            this.stamp_type.Name = "stamp_type";
+            this.stamp_type.ReadOnly = true;
+            this.stamp_type.Width = 89;
+            // 
+            // before_last_frame
+            // 
+            this.before_last_frame.HeaderText = "Before Last";
+            this.before_last_frame.Name = "before_last_frame";
+            // 
+            // first_frame
+            // 
+            this.first_frame.HeaderText = "First";
+            this.first_frame.Name = "first_frame";
+            // 
+            // last_frame
+            // 
+            this.last_frame.HeaderText = "Last";
+            this.last_frame.Name = "last_frame";
+            // 
+            // last_data
+            // 
+            this.last_data.HeaderText = "Last";
+            this.last_data.Name = "last_data";
+            // 
+            // last_no_1st_no
+            // 
+            this.last_no_1st_no.HeaderText = "Last No";
+            this.last_no_1st_no.Name = "last_no_1st_no";
+            // 
             // OrganizeData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 769);
+            this.ClientSize = new System.Drawing.Size(800, 794);
             this.Controls.Add(this.btn_refresh_organizedata);
             this.Controls.Add(this.timePicker_enddate_organizedata);
             this.Controls.Add(this.timePicker_startdate_organizedata);
@@ -172,15 +174,15 @@ namespace ADM_WLC
             this.Controls.Add(this.lbl_enddate_organizedata);
             this.Controls.Add(this.datePicker_startdate_organizedata);
             this.Controls.Add(this.lbl_startdate_organizedata);
-            this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Controls.Add(this.dataGridView_organizedata);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OrganizeData";
             this.ShowIcon = false;
             this.Text = "OrganizeData";
             this.Load += new System.EventHandler(this.OrganizeData_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_organizedata)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,13 +190,7 @@ namespace ADM_WLC
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stamp_type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn before_last_frame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn first_frame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn last_frame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn last_data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn last_no_1st_no;
+        private System.Windows.Forms.DataGridView dataGridView_organizedata;
         private System.Windows.Forms.DateTimePicker timePicker_enddate_organizedata;
         private System.Windows.Forms.DateTimePicker timePicker_startdate_organizedata;
         private System.Windows.Forms.DateTimePicker datePicker_enddate_organizedata;
@@ -202,5 +198,11 @@ namespace ADM_WLC
         private System.Windows.Forms.DateTimePicker datePicker_startdate_organizedata;
         private System.Windows.Forms.Label lbl_startdate_organizedata;
         private System.Windows.Forms.Button btn_refresh_organizedata;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stamp_type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn before_last_frame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn first_frame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn last_frame;
+        private System.Windows.Forms.DataGridViewTextBoxColumn last_data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn last_no_1st_no;
     }
 }

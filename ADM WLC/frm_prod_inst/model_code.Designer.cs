@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView_model_code = new System.Windows.Forms.DataGridView();
             this.btn_cancel_model_code = new System.Windows.Forms.Button();
             this.btn_register_model_code = new System.Windows.Forms.Button();
             this.btn_delete_model_code = new System.Windows.Forms.Button();
             this.btn_insert_model_code = new System.Windows.Forms.Button();
             this.btn_insert_top_model_code = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_model_code)).BeginInit();
+            this.lb_modelcode = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
-            // 
-            // dataGridView_model_code
-            // 
-            this.dataGridView_model_code.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView_model_code.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_model_code.Location = new System.Drawing.Point(4, 3);
-            this.dataGridView_model_code.Name = "dataGridView_model_code";
-            this.dataGridView_model_code.Size = new System.Drawing.Size(388, 494);
-            this.dataGridView_model_code.TabIndex = 0;
             // 
             // btn_cancel_model_code
             // 
@@ -105,35 +93,42 @@
             this.btn_insert_top_model_code.Text = "Insert Top";
             this.btn_insert_top_model_code.UseVisualStyleBackColor = true;
             // 
+            // lb_modelcode
+            // 
+            this.lb_modelcode.FormattingEnabled = true;
+            this.lb_modelcode.Location = new System.Drawing.Point(4, 2);
+            this.lb_modelcode.Name = "lb_modelcode";
+            this.lb_modelcode.Size = new System.Drawing.Size(388, 498);
+            this.lb_modelcode.TabIndex = 23;
+            // 
             // model_code
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 613);
+            this.Controls.Add(this.lb_modelcode);
             this.Controls.Add(this.btn_insert_top_model_code);
             this.Controls.Add(this.btn_insert_model_code);
             this.Controls.Add(this.btn_delete_model_code);
             this.Controls.Add(this.btn_register_model_code);
             this.Controls.Add(this.btn_cancel_model_code);
-            this.Controls.Add(this.dataGridView_model_code);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "model_code";
             this.ShowIcon = false;
             this.Text = "Model Code";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_model_code)).EndInit();
+            this.Load += new System.EventHandler(this.model_code_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView_model_code;
         private System.Windows.Forms.Button btn_cancel_model_code;
         private System.Windows.Forms.Button btn_register_model_code;
         private System.Windows.Forms.Button btn_delete_model_code;
         private System.Windows.Forms.Button btn_insert_model_code;
         private System.Windows.Forms.Button btn_insert_top_model_code;
+        private System.Windows.Forms.ListBox lb_modelcode;
     }
 }

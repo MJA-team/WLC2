@@ -1,18 +1,12 @@
 ﻿using ADM_WLC.conv_result;
 using DGVPrinterHelper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.Devices;
 using ADM_WLC.SQLHelpers;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace ADM_WLC
@@ -20,9 +14,10 @@ namespace ADM_WLC
     public partial class form_conv_result : Form
     {
         DataTable dt;
-        private SqlConnection conn;
-        private SqlDataReader dr;
+        private SQLiteConnection conn;
+        private SQLiteDataReader dr;
         string pass;
+
         private string valid = "FFyIPbfu0qhn7+vt6MRbu5otTkWhNcbFqUTnMHPk34E="; //Password : 123456
 
         public form_conv_result()
@@ -85,9 +80,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"UPDATE wlc_data SET chassis_number = '" + chassis + "' WHERE pid = '" + pid + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -104,9 +99,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"SELECT * FROM wlc_data WHERE pid = '" + PidList + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 dr = cmd.ExecuteReader();

@@ -3,6 +3,7 @@ using ADM_WLC.SQLHelpers;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace ADM_WLC
     public partial class form_prod_inst : Form
     {
         DataTable dt;
-        SqlConnection conn;
+        SQLiteConnection conn;
 
         public form_prod_inst()
         {
@@ -90,11 +91,11 @@ namespace ADM_WLC
             try
             {
                 string Query = @"SELECT DISTINCT model_code FROM prod_inst WHERE model_code IS NOT NULL and model_code != ''";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+                SQLiteDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
                     comboBox_cclink_no1_prod_inst.Items.Add(reader[0].ToString());
@@ -262,9 +263,9 @@ namespace ADM_WLC
                                     "[30_b1] ='" + _30b1 + "'," +
                                     "[30_b2] ='" + _30b2 + "'" +
                                     "WHERE id ='" + id + "'";
-                    conn = new SqlConnection();
+                    conn = new SQLiteConnection();
                     conn.ConnectionString = Helpers.connectionString;
-                    SqlCommand cmd = new SqlCommand(Query, conn);
+                    SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -416,9 +417,9 @@ namespace ADM_WLC
                                    "[12_b1] ='" + _12b1 + "'," +
                                    "[12_b2] ='" + _12b2 + "'" +
                                    "WHERE id ='" + id + "'";
-                        conn = new SqlConnection();
+                        conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
-                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -623,9 +624,9 @@ namespace ADM_WLC
                                    "[12_b1] ='" + _12b1 + "'," +
                                    "[12_b2] ='" + _12b2 + "'" +
                                    "WHERE id ='" + id + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
