@@ -352,3 +352,6 @@ MigrationBackup/
 *.sqlite
 .vs/WLC2/v16/.suo
 *.cache
+*.sqlite
+*.sqlite
+*.pdb
