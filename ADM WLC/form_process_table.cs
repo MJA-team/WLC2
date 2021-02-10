@@ -6,14 +6,17 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ADM_WLC
-{    
+{
     public partial class form_process_table : Form
     {
         DataTable dt;
+        DataTable dtAll;
         SqlConnection conn;
+        PLCCommunication plc = new PLCCommunication();
 
         public form_process_table()
         {
@@ -42,10 +45,28 @@ namespace ADM_WLC
             this.StartPosition = FormStartPosition.CenterScreen;
             this.ControlBox = false;
 
+            GetProcessTableDataAsync();
             comboBox_cclink_no_process_table.SelectedIndex = 0;
             dataGridView_process_table.EnableHeadersVisualStyles = false;
             dataGridView_process_table.ColumnHeadersDefaultCellStyle.BackColor = Color.SkyBlue;
             //dataGridView_process_table.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private async void GetProcessTableDataAsync()
+        {
+            DataTable dta = new DataTable();
+            await Task.Run(() => plc.GetProcessTable(ref dta));
+            dtAll = dta.Copy();
+            TampilGrid();
+        }
+
+        private async void WriteProcessTableDataAsync()
+        {
+            int result = await Task.Run(() => plc.WriteProcessTable(ref dt));
+            if (result!=0)
+            {
+                MessageBox.Show("Write to PLC Error", "ADM WL/C");
+            }
         }
 
         private void TampilGrid()
@@ -53,10 +74,32 @@ namespace ADM_WLC
             Object cc_link = comboBox_cclink_no_process_table.SelectedItem;
             try
             {
-                string Query = @"SELECT *FROM process_table WHERE cc_link_no = '" + cc_link + "'";
+                //string Query = @"SELECT *FROM process_table WHERE cc_link_no = '" + cc_link + "'";
 
-                dt = new DataTable();
-                dt = Helpers.GetDatatable(Query);
+                //dt = new DataTable();
+                //dt = Helpers.GetDatatable(Query);
+                if (dtAll != null)
+                {
+                    if (dt != null)
+                    {
+                        dt.Clear();
+                    }
+                    dt = dtAll.Clone();
+                    // Filter expression
+                    string expression = "cc_link_no = " + cc_link;
+
+                    // Sort
+                    //string sortOrder = "cc_link_no ASC, stno ASC";
+                    string sortOrder = "cc_link_no ASC";
+                    DataRow[] foundRows;
+
+                    // Use the Select method to find all rows matching the filter.
+                    foundRows = dtAll.Select(expression, sortOrder);
+                    foreach (DataRow dr in foundRows)
+                    {
+                        dt.ImportRow(dr);
+                    }
+                }
                 dataGridView_process_table.DataSource = dt;
 
                 //Enable and Disable Button Next
@@ -83,17 +126,27 @@ namespace ADM_WLC
 
         private void TampilAll()
         {
-            try
+            //try
+            //{
+            //    string Query = @"SELECT *FROM process_table";
+            //    dt = new DataTable();
+            //    dt = Helpers.GetDatatable(Query);
+            //    dataGridView_process_table.DataSource = dt;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+            if (dtAll != null)
             {
-                string Query = @"SELECT *FROM process_table";
-                dt = new DataTable();
-                dt = Helpers.GetDatatable(Query);
-                dataGridView_process_table.DataSource = dt;
+                if (dt != null)
+                {
+                    dt.Clear();
+                }
+
+                dt = dtAll.Copy();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            dataGridView_process_table.DataSource = dt;
         }
 
         private DataTable ReadCsvFile(string file)
@@ -264,7 +317,7 @@ namespace ADM_WLC
             DialogResult dialogResult = MessageBox.Show("Register OK?", "ADM WL/C", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-
+                WriteProcessTableDataAsync();
             }
         }
 
@@ -277,7 +330,7 @@ namespace ADM_WLC
         {
             ImportCSV();
         }
-       
+
         private void btn_export_process_table_Click(object sender, EventArgs e)
         {
             TampilAll();
@@ -295,12 +348,13 @@ namespace ADM_WLC
 
         private void btn_refreh_process_table_Click(object sender, EventArgs e)
         {
-            while (dataGridView_process_table.Rows.Count > 0)
-            {
-                dataGridView_process_table.Rows.Remove(dataGridView_process_table.Rows[0]);
-            }
-            dataGridView_process_table.Refresh();
-            TampilGrid();
+            //while (dataGridView_process_table.Rows.Count > 0)
+            //{
+            //    dataGridView_process_table.Rows.Remove(dataGridView_process_table.Rows[0]);
+            //}
+            //dataGridView_process_table.Refresh();
+            //TampilGrid();
+            GetProcessTableDataAsync();
         }
 
         private void dataGridView_process_table_CellEndEdit(object sender, DataGridViewCellEventArgs e)
