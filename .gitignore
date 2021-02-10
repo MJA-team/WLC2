@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+.vs/ADM WLC/v16/.suo
+*.sqlite
+.vs/WLC2/v16/.suo
+*.cache
