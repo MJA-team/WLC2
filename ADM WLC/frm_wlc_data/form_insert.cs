@@ -36,6 +36,8 @@ namespace ADM_WLC
             {
                 string sequence = "";
                 string pid = tb_pid_insert.Text;
+                string _1pid = pid.Substring(2, 8);
+                string _pid = "F1" + _1pid;
                 string vin = tb_vin_insert.Text;
                 DateTime date = dtPicker.Value.Date;
                 string _date = date.ToString("yyyy-MM-dd");
@@ -46,7 +48,7 @@ namespace ADM_WLC
                 string classif = "Insert";
                 string Query = @"INSERT INTO wlc_data (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
                                    VALUES ('" + sequence + "', " +
-                                          "'" + pid + "', " +
+                                          "'" + _pid + "', " +
                                           "'" + vin + "'," +
                                           "'" + _date + "'," +
                                           "'" + wlc + "'," +

@@ -157,11 +157,11 @@ namespace ADM_WLC
                     string pidLast = last.Substring(4, 10);
                     string pidFirst = first.Substring(4, 10);
                     string cnt = counter.ToString();
+                    GetText.PidFirst = pidFirst;
+                    GetText.PidLast = pidLast;
+                    GetText.CounterPid = cnt;
                     load_data f = new load_data(this);
-                    f.Show();
-                    f.tb_head_pid.Text = pidFirst;
-                    f.tb_last_pid.Text = pidLast;
-                    f.tb_numb_data.Text = cnt;
+                    f.ShowDialog();
                 }
             }
             catch (Exception ex)
@@ -296,7 +296,10 @@ namespace ADM_WLC
             if (Itemfound == false)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = GetText.pid;
+                string _1pid = (string)GetText.pid;
+                string _pid = _1pid.Substring(2, 8);
+
+                dr[0] = "F1" + _pid;
                 dr[1] = GetText.vin;
                 dr[2] = GetText.date;
                 dr[3] = GetText.wlc;
@@ -329,7 +332,10 @@ namespace ADM_WLC
             if (Itemfound == false)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = GetText.pid;
+                string _1pid = (string)GetText.pid;
+                string _pid = _1pid.Substring(2, 8);
+
+                dr[0] = "F1" + _pid;
                 dr[1] = GetText.vin;
                 dr[2] = GetText.date;
                 dr[3] = GetText.wlc;

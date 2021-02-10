@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LocalDB" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source ="D:\Application\ADM-WLC - SQL update\ADM WLC\bin\Debug\db\adm_wlc.db"</Value>
+      <Value Profile="(Default)">Data Source =.\db\adm_wlc.db</Value>
     </Setting>
   </Settings>
 </SettingsFile>

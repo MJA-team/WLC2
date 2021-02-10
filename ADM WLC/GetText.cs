@@ -8,7 +8,7 @@ namespace ADM_WLC
 {
     class GetText
     {
-        static string tb_pid, tb_vin, dtPicker, lb_wlc, tb_model, tb_suffix, tb_chassis, lb_pid_suspend, textinsert, lb_pidlist, passsub, passedit, datePickerStart, datePickerEnd, timePickerStart, timePickerEnd;
+        static string tb_pid, tb_vin, dtPicker, lb_wlc, tb_model, tb_suffix, tb_chassis, lb_pid_suspend, textinsert, lb_pidlist, pidFirst, pidLast, cnt, passsub, passedit, datePickerStart, datePickerEnd, timePickerStart, timePickerEnd;
 
         public static string pid
         {
@@ -127,6 +127,42 @@ namespace ADM_WLC
             set
             {
                 lb_pidlist = value;
+            }
+        }
+
+        public static string PidFirst
+        {
+            get
+            {
+                return pidFirst;
+            }
+            set
+            {
+                pidFirst = value;
+            }
+        }
+
+        public static string PidLast
+        {
+            get
+            {
+                return pidLast;
+            }
+            set
+            {
+                pidLast = value;
+            }
+        }
+
+        public static string CounterPid
+        {
+            get
+            {
+                return cnt;
+            }
+            set
+            {
+                cnt = value;
             }
         }
 

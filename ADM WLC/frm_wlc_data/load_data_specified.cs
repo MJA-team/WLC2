@@ -56,6 +56,9 @@ namespace ADM_WLC
         {
             tb_head_pid_load_data_specified.GotFocus += tb_head_pid_load_data_specified_GotFocus;
             tb_last_pid_specified.GotFocus += tb_last_pid_specified_GotFocus;
+            tb_head_pid_load_data_specified.Text = GetText.PidFirst;
+            tb_last_pid_specified.Text = GetText.PidLast;
+            tb_numb_data_specified.Text = GetText.CounterPid;
         }
 
         private void tb_last_pid_specified_GotFocus(object sender, EventArgs e)
