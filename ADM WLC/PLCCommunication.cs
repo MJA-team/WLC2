@@ -548,6 +548,7 @@ namespace ADM_WLC
                         if (iReturnCode == 0)
                         {
                             int k = 0;
+                            szProcessName = "";
                             foreach (var baca in arrDeviceValue)
                             {
                                 if (k < 16)
@@ -609,121 +610,94 @@ namespace ADM_WLC
             }
             //return dta;
         }
-        public void WriteProcessTable(ref DataTable dta)
+        public int WriteProcessTable(ref DataTable dta)
         {
-            int iReturnCode;				//Return code
-            int iStartAddr;
-            int iStart;
+            int iReturnCode = 9;				//Return code
             string szAdd = "ZR";
-            string szDeviceName;		//List data for 'DeviceName'
-            int iNumberOfData = 32;			//Data for 'DeviceSize'
-            short[] arrDeviceValue = new short[iNumberOfData];
-            int iProcessType = 0;
-            int iProcessDepth = 0;
-            int iNormalReverse = 0;
-            int iReverseWidth = 0;
-            int iMarginofAdvance = 0;
-            int iMarginofDelay = 0;
-            int iCutOff = 0;
-            string szProcessName = "";
+            short[] arrDeviceValue = new short[32];
             List<ProcessTableData> processtables = new List<ProcessTableData>();
-            //DataTable dta = new DataTable();
 
             try
             {
                 if (Connected == false)
+                //if (Connected == true)
                 {
-                }
                     if (dta != null)
                     {
                         foreach (DataRow dr in dta.Rows)
                         {
-                            iProcessType = (int)dr["UserName"];
+                            //Copy data row to Data
+                            short iCCLink = dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]);
+                            short iStationNo = dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]);
+                            arrDeviceValue[0] = dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]);
+                            arrDeviceValue[1] = dr["depth"] is null ? 0 : Convert.ToInt16(dr["depth"]);
+                            arrDeviceValue[2] = dr["normal_reverse"] is null ? 0 : Convert.ToInt16(dr["normal_reverse"]);
+                            arrDeviceValue[3] = dr["margin_reverse"] is null ? 0 : Convert.ToInt16(dr["margin_reverse"]);
+                            arrDeviceValue[4] = dr["margin_of_adv"] is null ? 0 : Convert.ToInt16(dr["margin_of_adv"]);
+                            arrDeviceValue[5] = dr["margin_of_delay"] is null ? 0 : Convert.ToInt16(dr["margin_of_delay"]);
+                            arrDeviceValue[6] = dr["cut_off"] is null ? 0 : Convert.ToInt16(dr["cut_off"]);
+                            string szProcessName = dr["process_name"] is null ? String.Empty : dr["process_name"].ToString();
 
-                        }
-                        int idx = 0;
-                        for (int cclink = 1; cclink <= 4; cclink++)
-                        {
-                            iStart = ((cclink - 1) * 1000) + 3000;
-                            for (int stno = 1; stno <= 30; stno++)
-                            {
-                                iStartAddr = ((stno - 1) * 32) + iStart;
-                                szDeviceName = szAdd + iStartAddr.ToString();
-                                iReturnCode = 0;
-                                if (Connected == true)
-                                {
-                                    iReturnCode = plc.WriteDeviceBlock2(szDeviceName, iNumberOfData, ref arrDeviceValue[0]);
-                                }
-                                if (iReturnCode == 0)
-                                {
-                                    int k = 0;
-                                    foreach (var baca in arrDeviceValue)
-                                    {
-                                        if (k < 16)
-                                        {
-                                            switch (k)
-                                            {
-                                                case 0:
-                                                    iProcessType = baca;
-                                                    break;
-                                                case 1:
-                                                    iProcessDepth = baca;
-                                                    break;
-                                                case 2:
-                                                    iNormalReverse = baca;
-                                                    break;
-                                                case 3:
-                                                    iReverseWidth = baca;
-                                                    break;
-                                                case 4:
-                                                    iMarginofAdvance = baca;
-                                                    break;
-                                                case 5:
-                                                    iMarginofDelay = baca;
-                                                    break;
-                                                case 6:
-                                                    iCutOff = baca;
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-                                        }
-                                        else
-                                        {
-                                            byte[] kon = BitConverter.GetBytes(baca);
+                            //Copy data row Process Name to Data
+                            short[] arrValue = new short[16];
+                            StringToInt16(szProcessName, ref arrValue);
 
-                                            foreach (byte m in kon)
-                                            {
-                                                char tchar = Convert.ToChar(m);
-                                                szProcessName += tchar.ToString();
-                                            }
-                                        }
-                                        k++;
-                                    }
-                                    //insert to datatable
-                                    processtables.Add(new ProcessTableData { id = idx, cc_link_no = cclink, stno = stno, process_type = iProcessType, depth = iProcessDepth, normal_reverse = iNormalReverse, margin_reverse = iReverseWidth, margin_of_adv = iMarginofAdvance, margin_of_delay = iMarginofDelay, cut_off = iCutOff, process_name = szProcessName });
-                                }
-                                idx++;
-                            }
+                            //Merge the Data
+                            arrValue.CopyTo(arrDeviceValue, 16);
+
+                            //Calculate the address
+                            int iStart = ((iCCLink - 1) * 1000) + 3000;
+                            int iStartAddr = ((iStationNo - 1) * 32) + iStart;
+                            string szDeviceName = szAdd + iStartAddr.ToString();
+
+                            //Send to PLC
+                            //iReturnCode = plc.WriteDeviceBlock2(szDeviceName, arrDeviceValue.Length, ref arrDeviceValue[0]);
+                            iReturnCode = 0;
                         }
                     }
-                
+                    else iReturnCode = 7;
+                }
+                else iReturnCode = 8;
             }
             //Exception processing
             catch (Exception exception)
             {
                 Debug.WriteLine(exception.Message);
-                string stringFormat = "Read Process Table Failed";
+                string stringFormat = "Write Process Table Failed";
                 StatusPLCLog = stringFormat;
             }
-            //return dta;
+            return iReturnCode;
         }
 
-        public static UInt16 BytesToUInt16(Byte B1, Byte B2)
+        public static void StringToInt16(string data, ref short[] arrValue)
         {
-            UInt16 value = B1;
+            int iNumOfData = data.Length;
+            int iNumOfValue = arrValue.Length;
+            int maxChar = iNumOfValue * 2;
+
+            //Convert data to byte array
+            byte[] byChar = Encoding.ASCII.GetBytes(data);
+
+            //Loop preparing arrValue
+            int idxChar = 0;
+            for (int idxValue = 0; idxValue < arrValue.Length; idxValue++)
+            {
+                var conditionX = idxChar < byChar.Length;
+                byte x = conditionX ? byChar[idxChar] : 0;
+                var conditionY = idxChar + 1 < byChar.Length;
+                byte y = conditionY ? byChar[idxChar + 1] : 0;
+
+                arrValue[idxValue] = BytesToInt16(y, x);
+
+                idxChar += 2;
+            }
+        }
+
+        public static Int16 BytesToInt16(Byte B1, Byte B2)
+        {
+            Int16 value = B1;
             value <<= 8;
-            value += Convert.ToUInt16(B2);
+            value += Convert.ToInt16(B2);
             return value;
         }
 

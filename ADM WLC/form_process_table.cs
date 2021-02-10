@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ADM_WLC
-{    
+{
     public partial class form_process_table : Form
     {
         DataTable dt;
@@ -58,7 +58,16 @@ namespace ADM_WLC
             await Task.Run(() => plc.GetProcessTable(ref dta));
             dtAll = dta.Copy();
             TampilGrid();
-        }        
+        }
+
+        private async void WriteProcessTableDataAsync()
+        {
+            int result = await Task.Run(() => plc.WriteProcessTable(ref dt));
+            if (result!=0)
+            {
+                MessageBox.Show("Write to PLC Error", "ADM WL/C");
+            }
+        }
 
         private void TampilGrid()
         {
@@ -308,7 +317,7 @@ namespace ADM_WLC
             DialogResult dialogResult = MessageBox.Show("Register OK?", "ADM WL/C", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-
+                WriteProcessTableDataAsync();
             }
         }
 
@@ -321,7 +330,7 @@ namespace ADM_WLC
         {
             ImportCSV();
         }
-       
+
         private void btn_export_process_table_Click(object sender, EventArgs e)
         {
             TampilAll();
