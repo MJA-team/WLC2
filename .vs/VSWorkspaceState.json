@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ADM WLC",
+    "\\ADM WLC\\frm_wlc_data",
+    "\\ADM WLC\\Properties",
+    "\\packages"
   ],
   "SelectedNode": "\\ADM WLC.sln",
   "PreviewInSolutionExplorer": false

@@ -32,6 +32,7 @@
             this.dataGridView_process_table = new System.Windows.Forms.DataGridView();
             this.cc_link_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sa_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.process_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.process_type = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +77,7 @@
             this.dataGridView_process_table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cc_link_no,
             this.id,
+            this.stno,
             this.sa_name,
             this.process_name,
             this.process_type,
@@ -89,7 +91,6 @@
             this.end});
             this.dataGridView_process_table.Location = new System.Drawing.Point(2, 50);
             this.dataGridView_process_table.Name = "dataGridView_process_table";
-            this.dataGridView_process_table.ReadOnly = true;
             this.dataGridView_process_table.Size = new System.Drawing.Size(1282, 574);
             this.dataGridView_process_table.TabIndex = 40;
             this.dataGridView_process_table.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_process_table_CellEndEdit);
@@ -100,7 +101,6 @@
             this.cc_link_no.DataPropertyName = "cc_link_no";
             this.cc_link_no.HeaderText = "CC-Link No";
             this.cc_link_no.Name = "cc_link_no";
-            this.cc_link_no.ReadOnly = true;
             this.cc_link_no.Visible = false;
             this.cc_link_no.Width = 50;
             // 
@@ -109,24 +109,28 @@
             this.id.DataPropertyName = "id";
             this.id.HeaderText = "id";
             this.id.Name = "id";
-            this.id.ReadOnly = true;
             this.id.Visible = false;
             this.id.Width = 50;
+            // 
+            // stno
+            // 
+            this.stno.DataPropertyName = "stno";
+            this.stno.HeaderText = "Station No";
+            this.stno.Name = "stno";
+            this.stno.Visible = false;
             // 
             // sa_name
             // 
             this.sa_name.DataPropertyName = "sa_name";
             this.sa_name.HeaderText = "S/A Name";
             this.sa_name.Name = "sa_name";
-            this.sa_name.ReadOnly = true;
-            this.sa_name.Width = 400;
+            this.sa_name.Width = 50;
             // 
             // process_name
             // 
             this.process_name.DataPropertyName = "process_name";
             this.process_name.HeaderText = "Process Name";
             this.process_name.Name = "process_name";
-            this.process_name.ReadOnly = true;
             this.process_name.Width = 200;
             // 
             // process_type
@@ -134,56 +138,48 @@
             this.process_type.DataPropertyName = "process_type";
             this.process_type.HeaderText = "Process Type";
             this.process_type.Name = "process_type";
-            this.process_type.ReadOnly = true;
             // 
             // normal_reverse
             // 
             this.normal_reverse.DataPropertyName = "normal_reverse";
             this.normal_reverse.HeaderText = "Normal Reverse";
             this.normal_reverse.Name = "normal_reverse";
-            this.normal_reverse.ReadOnly = true;
             // 
             // margin_reverse
             // 
             this.margin_reverse.DataPropertyName = "margin_reverse";
             this.margin_reverse.HeaderText = "Margin Reverse";
             this.margin_reverse.Name = "margin_reverse";
-            this.margin_reverse.ReadOnly = true;
             // 
             // depth
             // 
             this.depth.DataPropertyName = "depth";
             this.depth.HeaderText = "Depth";
             this.depth.Name = "depth";
-            this.depth.ReadOnly = true;
             // 
             // margin_of_adv
             // 
             this.margin_of_adv.DataPropertyName = "margin_of_adv";
             this.margin_of_adv.HeaderText = "Margin of Advance";
             this.margin_of_adv.Name = "margin_of_adv";
-            this.margin_of_adv.ReadOnly = true;
             // 
             // margin_of_delay
             // 
             this.margin_of_delay.DataPropertyName = "margin_of_delay";
             this.margin_of_delay.HeaderText = "Margin of Delay";
             this.margin_of_delay.Name = "margin_of_delay";
-            this.margin_of_delay.ReadOnly = true;
             // 
             // cut_off
             // 
             this.cut_off.DataPropertyName = "cut_off";
             this.cut_off.HeaderText = "Cut Off";
             this.cut_off.Name = "cut_off";
-            this.cut_off.ReadOnly = true;
             // 
             // memo
             // 
             this.memo.DataPropertyName = "memo";
             this.memo.HeaderText = "Memo";
             this.memo.Name = "memo";
-            this.memo.ReadOnly = true;
             this.memo.Width = 150;
             // 
             // end
@@ -191,7 +187,6 @@
             this.end.DataPropertyName = "end";
             this.end.HeaderText = "";
             this.end.Name = "end";
-            this.end.ReadOnly = true;
             this.end.Visible = false;
             // 
             // btn_prev_process_table
@@ -333,6 +328,7 @@
         private System.Windows.Forms.ComboBox comboBox_cclink_no_process_table;
         private System.Windows.Forms.DataGridViewTextBoxColumn cc_link_no;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stno;
         private System.Windows.Forms.DataGridViewTextBoxColumn sa_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn process_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn process_type;
