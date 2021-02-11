@@ -615,18 +615,18 @@ namespace ADM_WLC
             int iReturnCode = 9;				//Return code
             string szAdd = "ZR";
             short[] arrDeviceValue = new short[32];
-            List<ProcessTableData> processtables = new List<ProcessTableData>();
 
             try
             {
-                if (Connected == false)
-                //if (Connected == true)
+                //if (Connected == false)
+                if (Connected == true)
                 {
                     if (dta != null)
                     {
                         foreach (DataRow dr in dta.Rows)
                         {
                             //Copy data row to Data
+                            //Perlu cek dulu jika within range
                             short iCCLink = dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]);
                             short iStationNo = dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]);
                             arrDeviceValue[0] = dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]);
@@ -651,13 +651,13 @@ namespace ADM_WLC
                             string szDeviceName = szAdd + iStartAddr.ToString();
 
                             //Send to PLC
-                            //iReturnCode = plc.WriteDeviceBlock2(szDeviceName, arrDeviceValue.Length, ref arrDeviceValue[0]);
-                            iReturnCode = 0;
+                            iReturnCode = plc.WriteDeviceBlock2(szDeviceName, arrDeviceValue.Length, ref arrDeviceValue[0]);
+                            //iReturnCode = 0;
                         }
                     }
-                    else iReturnCode = 7;
+                    else iReturnCode = 7; //data is null
                 }
-                else iReturnCode = 8;
+                else iReturnCode = 8; //not connected
             }
             //Exception processing
             catch (Exception exception)
@@ -665,6 +665,7 @@ namespace ADM_WLC
                 Debug.WriteLine(exception.Message);
                 string stringFormat = "Write Process Table Failed";
                 StatusPLCLog = stringFormat;
+                iReturnCode = 9;
             }
             return iReturnCode;
         }
