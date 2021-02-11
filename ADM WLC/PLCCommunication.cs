@@ -76,7 +76,7 @@ namespace ADM_WLC
             //Get the value as 32bit integer from a TextBox
             try
             {
-                //iGottenIntValue = Convert.ToInt32(Properties.Settings.Default.LogicalStationNumber);
+                iGottenIntValue = Convert.ToInt32(Properties.Settings.Default.LogicalStationNumber);
             }
 
             //Exception processing
