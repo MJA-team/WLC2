@@ -20,8 +20,9 @@ namespace ADM_WLC
         private SqlConnection conn;
         private SqlDataReader dr;
         string pass;
+        public string valid { get; private set; }
 
-        private string valid = "FFyIPbfu0qhn7+vt6MRbu5otTkWhNcbFqUTnMHPk34E="; //Password : 123456
+        //private string valid = "FFyIPbfu0qhn7+vt6MRbu5otTkWhNcbFqUTnMHPk34E="; //Password : 123456
 
         public form_conv_result()
         {
@@ -67,7 +68,7 @@ namespace ADM_WLC
             if (hashededit == valid)
             {
                 textBox_chasisnumber_conv_result.ReadOnly = false;
-                textBox_chasisnumber_conv_result.BackColor = Color.White;               
+                textBox_chasisnumber_conv_result.BackColor = Color.White;
             }
             else
             {
@@ -156,10 +157,28 @@ namespace ADM_WLC
             //while (dtAll == null)
             //{
 
-            //}
-            //harus nunggu 
-            //displayIndex = 0;
-            //TampilGrid(displayIndex);
+            try
+            {
+                String Valid = @"SELECT * FROM user_pass";
+                conn = new SQLiteConnection();
+                conn.ConnectionString = Helpers.connectionString;
+                SQLiteCommand cmd = new SQLiteCommand(Valid, conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    valid = (string)(dr["pass"]);
+                }
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            //TampilGrid();
         }
 
         private void TampilGrid(int pointer)
