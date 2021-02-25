@@ -16,7 +16,6 @@ namespace ADM_WLC
     {
         public static DataTable dt;
         public static DataTable dtAll;
-        SqlConnection conn;
         PLCCommunication plc = new PLCCommunication();
         SQLiteConnection conn;
 

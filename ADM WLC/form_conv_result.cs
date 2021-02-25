@@ -5,9 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using ADM_WLC.SQLHelpers;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ADM_WLC
 {
@@ -17,8 +18,8 @@ namespace ADM_WLC
         public static DataTable dtAll;
         private static int displayIndex;
         PLCCommunication plc = new PLCCommunication();
-        private SqlConnection conn;
-        private SqlDataReader dr;
+        private SQLiteConnection conn;
+        private SQLiteDataReader dr;
         string pass;
         public string valid { get; private set; }
 

@@ -34,5 +34,17 @@ namespace ADM_WLC.Properties {
                 this["LocalDB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string LogicalStationNumber {
+            get {
+                return ((string)(this["LogicalStationNumber"]));
+            }
+            set {
+                this["LogicalStationNumber"] = value;
+            }
+        }
     }
 }
