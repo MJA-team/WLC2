@@ -13,8 +13,8 @@ namespace ADM_WLC
 {
     public partial class form_process_table : Form
     {
-        DataTable dt;
-        DataTable dtAll;
+        public static DataTable dt;
+        public static DataTable dtAll;
         SqlConnection conn;
         PLCCommunication plc = new PLCCommunication();
 

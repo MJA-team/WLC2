@@ -192,8 +192,9 @@
     <Compile Include="frm_stamping_data\OrganizeData.Designer.cs">
       <DependentUpon>OrganizeData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConvResultData.cs" />
     <Compile Include="Models\Helpers.cs" />
-    <Compile Include="Models\Models.cs" />
+    <Compile Include="Models\ProcessTableData.cs" />
     <Compile Include="PLCCommunication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
