@@ -1,13 +1,7 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace ADM_WLC
@@ -15,8 +9,8 @@ namespace ADM_WLC
     public partial class suspend_data_list : Form
     {
         private readonly form_wlc_data _form;
-        private SqlConnection conn;
-        private SqlDataReader dr;
+        private SQLiteConnection conn;
+        private SQLiteDataReader dr;
         string delPid;
 
         public suspend_data_list(form_wlc_data form)
@@ -30,9 +24,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"SELECT pid FROM wlc_data WHERE classification = 'Suspend'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 dr = cmd.ExecuteReader();
@@ -60,9 +54,9 @@ namespace ADM_WLC
             {
                 ListPidSuspended();
                 string Query = @"DELETE FROM wlc_data WHERE pid = '" + delPid + "' AND classification = 'Suspend'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -86,10 +80,26 @@ namespace ADM_WLC
             this.StartPosition = FormStartPosition.CenterScreen;
             this.ControlBox = false;
             SuspendList();
+
+            System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+            timer1.Interval = 100;
+            timer1.Tick += new System.EventHandler(timer_Tick);
+            timer1.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            RefreshMyForm();
+        }
+
+        private void RefreshMyForm()
+        {
+            btn_insert_after_suspend_data_list.Text = GetText.txtinsert;
         }
 
         private void btn_cancel_suspend_data_list_Click(object sender, EventArgs e)
         {
+            _form.pnl_suspend_data_list_wlc_data.Controls.Clear();
             this.Close();
         }
 

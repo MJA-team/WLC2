@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
+using System.Data.SQLite;
 using ADM_WLC.SQLHelpers;
 
 namespace ADM_WLC
 {
     public partial class form_wlc_data : Form
     {
-        private SqlConnection conn;
-        private SqlDataReader drt;
+        private SQLiteConnection conn;
+        private SQLiteDataReader drt;
         private DataTable dt;
         public static OpenFileDialog ofd;
         string line = "";
@@ -62,7 +59,7 @@ namespace ADM_WLC
         {
             try
             {
-                string Query = @"CREATE TABLE [adm_wlc].[dbo].[wlc_data_temp](
+                string Query = @"CREATE TABLE wlc_data_temp(
 	                               [seq] INT
                                   ,[pid] VARCHAR(50)
                                   ,[vin] VARCHAR(50)
@@ -72,9 +69,9 @@ namespace ADM_WLC
                                   ,[suffix] VARCHAR(50)
                                   ,[chassis_number] VARCHAR(50)
                                   ,[classification] VARCHAR(50))";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -106,10 +103,10 @@ namespace ADM_WLC
                         string model = line.Substring(43, 4);
                         string suffix = line.Substring(47, 2);
                         string chasis = line.Substring(49, 19);
-                        string _2date = _1date.Insert(4, "/");
-                        string date = _2date.Insert(7, "/");
+                        string _2date = _1date.Insert(4, "-");
+                        string date = _2date.Insert(7, "-");
                         DateTime time = DateTime.Parse(date);
-                        string _date = time.ToString("yyyy/MM/dd");
+                        string _date = time.ToString("yyyy-MM-dd");
                         string Query = @"INSERT INTO wlc_data_temp (seq, pid, vin, plan_date, wlc_code, model_code, suffix, chassis_number, classification) 
                                         VALUES ('" + sequence + "', " +
                                                     "'" + pid + "', " +
@@ -121,9 +118,9 @@ namespace ADM_WLC
                                                     "'" + chasis + "'," +
                                                     "'" + classif + "')";
 
-                        conn = new SqlConnection();
+                        conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
-                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -160,11 +157,11 @@ namespace ADM_WLC
                     string pidLast = last.Substring(4, 10);
                     string pidFirst = first.Substring(4, 10);
                     string cnt = counter.ToString();
+                    GetText.PidFirst = pidFirst;
+                    GetText.PidLast = pidLast;
+                    GetText.CounterPid = cnt;
                     load_data f = new load_data(this);
-                    f.Show();
-                    f.tb_head_pid.Text = pidFirst;
-                    f.tb_last_pid.Text = pidLast;
-                    f.tb_numb_data.Text = cnt;
+                    f.ShowDialog();
                 }
             }
             catch (Exception ex)
@@ -177,10 +174,10 @@ namespace ADM_WLC
         {
             try
             {
-                string Query = @"DROP TABLE [adm_wlc].[dbo].[wlc_data_temp]";
-                conn = new SqlConnection();
+                string Query = @"DROP TABLE wlc_data_temp";
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -203,10 +200,10 @@ namespace ADM_WLC
                 {
                     if (oneRow.Selected)
                     {
-                        string Query = @"DELETE wlc_data WHERE pid ='" + id + "'";
-                        conn = new SqlConnection();
+                        string Query = @"DELETE FROM wlc_data WHERE pid ='" + id + "'";
+                        conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
-                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -221,9 +218,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"DELETE FROM wlc_data";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -245,7 +242,7 @@ namespace ADM_WLC
                     string pid = (string)dataGridView_wlc_data.Rows[i].Cells[1].Value;
                     string vin = (string)dataGridView_wlc_data.Rows[i].Cells[2].Value;
                     DateTime date = Convert.ToDateTime(dataGridView_wlc_data.Rows[i].Cells[3].Value);
-                    string _date = date.ToString("yyyy/MM/dd");
+                    string _date = date.ToString("yyyy-MM-dd");
                     string wlc = (string)dataGridView_wlc_data.Rows[i].Cells[4].Value;
                     string model = (string)dataGridView_wlc_data.Rows[i].Cells[5].Value;
                     string suffix = (string)dataGridView_wlc_data.Rows[i].Cells[6].Value;
@@ -262,9 +259,9 @@ namespace ADM_WLC
                                                 "'" + chasis + "'," +
                                                 "'" + classif + "')";
 
-                        conn = new SqlConnection();
+                        conn = new SQLiteConnection();
                         conn.ConnectionString = Helpers.connectionString;
-                        SqlCommand cmd = new SqlCommand(Query, conn);
+                        SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -299,7 +296,10 @@ namespace ADM_WLC
             if (Itemfound == false)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = GetText.pid;
+                string _1pid = (string)GetText.pid;
+                string _pid = _1pid.Substring(2, 8);
+
+                dr[0] = "F1" + _pid;
                 dr[1] = GetText.vin;
                 dr[2] = GetText.date;
                 dr[3] = GetText.wlc;
@@ -314,7 +314,8 @@ namespace ADM_WLC
         public void InsertTop()
         {
             form_insert f = new form_insert(this);
-            int index = dataGridView_wlc_data.Rows[0].Index;
+            //int index = dataGridView_wlc_data.Rows[0].Index;
+            int index = dataGridView_wlc_data.SelectedRows[0].Index;
             bool Itemfound = false;
             if (dataGridView_wlc_data.Rows.Count > 0)
             {
@@ -331,7 +332,10 @@ namespace ADM_WLC
             if (Itemfound == false)
             {
                 DataRow dr = dt.NewRow();
-                dr[0] = GetText.pid;
+                string _1pid = (string)GetText.pid;
+                string _pid = _1pid.Substring(2, 8);
+
+                dr[0] = "F1" + _pid;
                 dr[1] = GetText.vin;
                 dr[2] = GetText.date;
                 dr[3] = GetText.wlc;
@@ -352,16 +356,19 @@ namespace ADM_WLC
                 int idx = index + 1;
                 DataRow dr = dt.NewRow();
                 string Query = @"SELECT * FROM wlc_data WHERE pid = '" + GetText.lb_pid + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 drt = cmd.ExecuteReader();
 
                 while (drt.Read())
                 {
-                    dr[0] = (drt["pid"]);
+                    string _1pid = (string)(drt["pid"]);
+                    string _pid = _1pid.Substring(2,8);
+
+                    dr[0] = "F1" + _pid;
                     dr[1] = (drt["vin"]);
                     dr[2] = (drt["plan_date"]);
                     dr[3] = (drt["wlc_code"]);
@@ -384,19 +391,23 @@ namespace ADM_WLC
             try
             {
                 suspend_data_list f = new suspend_data_list(this);
-                int index = dataGridView_wlc_data.Rows[0].Index;
+                //int index = dataGridView_wlc_data.Rows[0].Index;
+                int index = dataGridView_wlc_data.SelectedRows[0].Index;
                 DataRow dr = dt.NewRow();
                 string Query = @"SELECT * FROM wlc_data WHERE pid = '" + GetText.lb_pid + "'";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 drt = cmd.ExecuteReader();
 
                 while (drt.Read())
                 {
-                    dr[0] = (drt["pid"]);
+                    string _1pid = (string)(drt["pid"]);
+                    string _pid = _1pid.Substring(2, 8);
+
+                    dr[0] = "F1" + _pid;
                     dr[1] = (drt["vin"]);
                     dr[2] = (drt["plan_date"]);
                     dr[3] = (drt["wlc_code"]);
@@ -412,7 +423,6 @@ namespace ADM_WLC
             {
                 MessageBox.Show(ex.Message);
             }
-    
         }
 
         public void DeleteRow()
@@ -424,6 +434,32 @@ namespace ADM_WLC
                     dataGridView_wlc_data.Rows.Remove(DeleteItem);
                 }
             }
+        }
+
+        private void OpenInsertForm()
+        {
+            pnl_suspend_data_list_wlc_data.Controls.Clear();
+            form_insert f = new form_insert(this);
+            f.TopLevel = false;
+            pnl_suspend_data_list_wlc_data.Controls.Add(f);
+            TextInsert();
+            f.Show();
+        }
+
+        private void OpenSuspedForm()
+        {
+            pnl_suspend_data_list_wlc_data.Controls.Clear();
+            suspend_data_list f = new suspend_data_list(this);
+            f.TopLevel = false;
+            pnl_suspend_data_list_wlc_data.Controls.Add(f);
+            TextInsert();
+            f.Show();
+        }
+
+        private void TextInsert()
+        {
+            SelectedRow();
+            GetText.txtinsert = "Insert After " + id;
         }
 
         private void form_wlc_data_Load(object sender, EventArgs e)
@@ -469,13 +505,7 @@ namespace ADM_WLC
 
         private void btn_insert_wlc_data_Click(object sender, EventArgs e)
         {
-            SelectedRow();
-            pnl_suspend_data_list_wlc_data.Controls.Clear();
-            form_insert f = new form_insert(this);
-            f.TopLevel = false;
-            pnl_suspend_data_list_wlc_data.Controls.Add(f);
-            f.btn_insert_after_insert.Text = "Insert After " + id;
-            f.Show();
+            OpenInsertForm();
         }
 
         private void dataGridView_wlc_data_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -554,10 +584,13 @@ namespace ADM_WLC
             {
                 try
                 {
-                    SelectedRow();
-                    string Query = @"UPDATE wlc_data SET classification = 'Delete' WHERE pid = '" + id + "'";
-                    dt = new DataTable();
-                    dt = Helpers.GetDatatable(Query);
+                    string Query = @"DELETE FROM wlc_data WHERE classification = 'Plan'";
+                    conn = new SQLiteConnection();
+                    conn.ConnectionString = Helpers.connectionString;
+                    SQLiteCommand cmd = new SQLiteCommand(Query, conn);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                     TampilAll();
                 }
                 catch (Exception ex)
@@ -569,13 +602,12 @@ namespace ADM_WLC
 
         private void btn_suspenddatalist_wlc_data_Click(object sender, EventArgs e)
         {
-            SelectedRow();
-            pnl_suspend_data_list_wlc_data.Controls.Clear();
-            suspend_data_list f = new suspend_data_list(this);
-            f.TopLevel = false;
-            pnl_suspend_data_list_wlc_data.Controls.Add(f);
-            f.btn_insert_after_suspend_data_list.Text = "Insert After " + id;
-            f.Show();
+            OpenSuspedForm();
+        }
+
+        private void dataGridView_wlc_data_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TextInsert();
         }
     }
 }

@@ -91,6 +91,7 @@
             this.Name = "form_submit";
             this.ShowIcon = false;
             this.Text = "Password";
+            this.Load += new System.EventHandler(this.form_submit_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

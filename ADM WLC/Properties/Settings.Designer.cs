@@ -23,49 +23,15 @@ namespace ADM_WLC.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dsn=RTWLCdata")]
-        public string ConnectionString {
-            get {
-                return ((string)(this["ConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MJANAWILAPTOP\\NAWI2019DB;Initial Catalog=adm_wlc;Integrated Security=" +
-            "True")]
-        public string wlcConnectionString {
-            get {
-                return ((string)(this["wlcConnectionString"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MJANAWILAPTOP\\NAWI2019DB;Initial Catalog=adm_wlc;Integrated Security=" +
-            "True")]
-        public string connWlc {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source =.\\db\\adm_wlc.db")]
+        public string LocalDB {
             get {
-                return ((string)(this["connWlc"]));
+                return ((string)(this["LocalDB"]));
             }
             set {
-                this["connWlc"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public string LogicalStationNumber {
-            get {
-                return ((string)(this["LogicalStationNumber"]));
-            }
-            set {
-                this["LogicalStationNumber"] = value;
+                this["LocalDB"] = value;
             }
         }
     }

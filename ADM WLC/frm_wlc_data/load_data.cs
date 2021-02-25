@@ -1,14 +1,7 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace ADM_WLC
@@ -16,7 +9,7 @@ namespace ADM_WLC
     public partial class load_data : Form
     {
         private readonly form_wlc_data _form;
-        private SqlConnection conn;
+        private SQLiteConnection conn;
 
         public load_data(form_wlc_data form)
         {
@@ -29,9 +22,9 @@ namespace ADM_WLC
             try
             {
                 string Query = @"INSERT INTO wlc_data SELECT * FROM wlc_data_temp";
-                conn = new SqlConnection();
+                conn = new SQLiteConnection();
                 conn.ConnectionString = Helpers.connectionString;
-                SqlCommand cmd = new SqlCommand(Query, conn);
+                SQLiteCommand cmd = new SQLiteCommand(Query, conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
@@ -51,10 +44,7 @@ namespace ADM_WLC
         private void btn_headpid_load_data_Click(object sender, EventArgs e)
         {
             load_data_specified f = new load_data_specified(this._form);
-            f.tb_head_pid_load_data_specified.Text = tb_head_pid.Text;
-            f.tb_last_pid_specified.Text = tb_last_pid.Text;
-            f.tb_numb_data_specified.Text = tb_numb_data.Text;
-            f.Show();
+            f.ShowDialog();
             this.Close();
         }
 
@@ -71,6 +61,9 @@ namespace ADM_WLC
             tb_head_pid.GotFocus += tb_head_pid_GotFocus;
             tb_last_pid.GotFocus += tb_last_pid_GotFocus;
             tb_numb_data.GotFocus += tb_numb_data_GotFocus;
+            tb_head_pid.Text = GetText.PidFirst;
+            tb_last_pid.Text = GetText.PidLast;
+            tb_numb_data.Text = GetText.CounterPid;
         }
 
         private void tb_numb_data_GotFocus(object sender, EventArgs e)
