@@ -3,7 +3,6 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using ADM_WLC.SQLHelpers;
 

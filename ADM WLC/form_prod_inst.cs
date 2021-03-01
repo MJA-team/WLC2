@@ -2,7 +2,6 @@
 using ADM_WLC.SQLHelpers;
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.IO;

@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using ADM_WLC.SQLHelpers;
 

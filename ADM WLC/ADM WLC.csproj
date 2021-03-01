@@ -29,6 +29,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,7 +65,9 @@
     <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=5.0.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.5.0.3\lib\net461\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -187,8 +190,9 @@
     <Compile Include="frm_stamping_data\OrganizeData.Designer.cs">
       <DependentUpon>OrganizeData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConvResultData.cs" />
     <Compile Include="Models\Helpers.cs" />
-    <Compile Include="Models\Models.cs" />
+    <Compile Include="Models\ProcessTableData.cs" />
     <Compile Include="PLCCommunication.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +209,7 @@
       <DependentUpon>SaveDataRangeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLHelpers\Helpers.cs" />
+    <Compile Include="SQLHelpers\WLCDataDB.cs" />
     <Compile Include="System\Web\UI.cs" />
     <EmbeddedResource Include="frm_conv_result\form_enable_edit.resx">
       <DependentUpon>form_enable_edit.cs</DependentUpon>
@@ -265,6 +270,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="frm_wlc_data\suspend_data_list.resx">
       <DependentUpon>suspend_data_list.cs</DependentUpon>
@@ -272,6 +278,9 @@
     <EmbeddedResource Include="frm_stamping_data\SaveDataRangeDialog.resx">
       <DependentUpon>SaveDataRangeDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="db\adm_wlc.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

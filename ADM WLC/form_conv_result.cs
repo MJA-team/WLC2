@@ -5,15 +5,21 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using ADM_WLC.SQLHelpers;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Linq;
+using System.Threading.Tasks;
+using ADM_WLC.Models;
+using System.Collections.Generic;
 
 namespace ADM_WLC
 {
     public partial class form_conv_result : Form
     {
-        DataTable dt;
+        public static DataTable dtView;
+        public static DataTable dtAll;
+        private static int displayIndex;
+        PLCCommunication plc = new PLCCommunication();
         private SQLiteConnection conn;
         private SQLiteDataReader dr;
         string pass;
@@ -150,6 +156,9 @@ namespace ADM_WLC
             dataGridView_conv_result.ColumnHeadersDefaultCellStyle.BackColor = Color.SkyBlue;
             btn_enableedit1_conv_result.Enabled = false;
             btn_enableedit_conv_result.Enabled = false;
+            GetConvResultTableDataAsync();
+            //while (dtAll == null)
+            //{
 
             try
             {
@@ -172,23 +181,78 @@ namespace ADM_WLC
                 MessageBox.Show(ex.Message);
             }
 
-            TampilGrid();
+            //TampilGrid();
         }
 
-        private void TampilGrid()
+        private void TampilGrid(int pointer)
         {
+            //TO DO masih salah
             try
             {
-                string Query = @"SELECT *FROM conv_result";
+                if (dtView != null)
+                {
+                    dtView.Clear();
+                }
+                dtView = DataGrid2Datatable(ref dataGridView_conv_result);
+                var row = GetRowbyId(pointer);
+                object jc = row["jobCode"];
+                List<JobCode> jCodes = (jc as IEnumerable<JobCode>).Cast<JobCode>().ToList();
 
-                dt = new DataTable();
-                dt = Helpers.GetDatatable(Query);
-                dataGridView_conv_result.DataSource = dt;
+                if (jc == null)
+                {
+                    //dtView.Rows.Add(row);
+                }
+                else
+                {
+                    foreach (var item in jCodes)
+                    {
+                        dtView.Rows.Add(item.B1.ToString(), item.B2.ToString());
+                    }
+                }
+                dataGridView_conv_result.DataSource = dtView;
+                textBox_pid_conv_result.Text = row["pid"].ToString();
+                textBox_vin_conv_result.Text = row["vin"].ToString();
+                textBox_wlccode_conv_result.Text = row["wlc_code"].ToString();
+                textBox_sfx_conv_result.Text = row["suffix"].ToString();
+                textBox_chasisnumber_conv_result.Text = row["chassis_number"].ToString();
+                textBox_modelcode_conv_result.Text = row["model_code"].ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private DataRow GetRowbyId(int pointer)
+        {
+            if (dtAll != null)
+            {
+                var expression = "Id = " + pointer;
+                var f = dtAll.Select(expression);
+                return f.FirstOrDefault();
+            }
+            else return null;
+        }
+
+        private void InitJobCode()
+        {
+            if (dtView.Rows.Count > 0)
+            {
+                dtView.Clear();
+                for (var i = 0; i < 30; i++)
+                {
+                    dtView.Rows.Add(0, 0);
+                }
+            }
+        }
+
+        private DataTable DataGrid2Datatable(ref DataGridView dataGridView)
+        {
+            DataTable table = new DataTable();
+            foreach (DataGridViewColumn d in dataGridView.Columns)
+            {
+                table.Columns.Add(d.HeaderText);
+            }
+            return table;
         }
 
         private void btn_notyetstarted_conv_result_Click(object sender, EventArgs e)
@@ -226,10 +290,9 @@ namespace ADM_WLC
             DialogResult dialogResult = MessageBox.Show("Change all Job code to '0'?", "ADM WL/C", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                string Query = @"UPDATE conv_result SET b1 = 0, b2 = 0";
-                dt = new DataTable();
-                dt = Helpers.GetDatatable(Query);
-                TampilGrid();
+                InitJobCode();
+                dataGridView_conv_result.DataSource = dtView;
+                //TampilGrid(displayIndex);
             }
         }
 
@@ -263,6 +326,47 @@ namespace ADM_WLC
             printer.Footer = "";
             printer.FooterSpacing = 15;
             printer.PrintDataGridView(dataGridView_conv_result);
+        }
+
+        private async void GetConvResultTableDataAsync()
+        {
+            DataTable dta = new DataTable();
+            int result = await Task.Run(() => plc.GetConvResultTable(ref dta));
+            if (result != 0)
+            {
+                string msg = "Read from PLC error";
+                MessageBox.Show(msg, "ADM WL/C");
+            }
+
+            dtAll = dta.Copy();
+            displayIndex = 0;
+            TampilGrid(displayIndex);
+            //TampilGrid();
+        }
+
+        private async void WriteConvResultTableDataAsync(int pointer)
+        {
+            string msg;
+            var row = GetRowbyId(pointer);
+            DataTable dt = new DataTable();
+            dt.Rows.Add(row);
+            int result = await Task.Run(() => plc.WriteConvResultTable(ref dt));
+            switch (result)
+            {
+                case 0:
+                    msg = "Write to PLC Succeeded";
+                    break;
+                case 7:
+                    msg = "Write to PLC Error - no Data to write";
+                    break;
+                case 8:
+                    msg = "Write to PLC Error - no connection to PLC";
+                    break;
+                default:
+                    msg = "Write to PLC Error";
+                    break;
+            }
+            MessageBox.Show(msg, "ADM WL/C");
         }
     }
 }
