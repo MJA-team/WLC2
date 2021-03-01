@@ -1,7 +1,6 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
@@ -14,8 +13,8 @@ namespace ADM_WLC
 {
     public partial class form_process_table : Form
     {
-        DataTable dt;
-        DataTable dtAll;
+        public static DataTable dt;
+        public static DataTable dtAll;
         PLCCommunication plc = new PLCCommunication();
         SQLiteConnection conn;
 
@@ -63,11 +62,24 @@ namespace ADM_WLC
 
         private async void WriteProcessTableDataAsync()
         {
+            string msg;
             int result = await Task.Run(() => plc.WriteProcessTable(ref dt));
-            if (result!=0)
+            switch (result)
             {
-                MessageBox.Show("Write to PLC Error", "ADM WL/C");
+                case 0:
+                    msg = "Write to PLC Succeeded";
+                    break;
+                case 7:
+                    msg = "Write to PLC Error - no Data to write";
+                    break;
+                case 8:
+                    msg = "Write to PLC Error - no connection to PLC";
+                    break;
+                default:
+                    msg = "Write to PLC Error";
+                    break;
             }
+            MessageBox.Show(msg, "ADM WL/C");
         }
 
         private void TampilGrid()

@@ -25,13 +25,25 @@ namespace ADM_WLC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source =.\\db\\adm_wlc.db")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source =.\\db\\adm_wlc.db; Version=3;")]
         public string LocalDB {
             get {
                 return ((string)(this["LocalDB"]));
             }
             set {
                 this["LocalDB"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public string LogicalStationNumber {
+            get {
+                return ((string)(this["LogicalStationNumber"]));
+            }
+            set {
+                this["LogicalStationNumber"] = value;
             }
         }
     }

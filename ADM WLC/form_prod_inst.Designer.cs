@@ -396,14 +396,14 @@
             // wlc_code
             // 
             this.wlc_code.DataPropertyName = "wlc_code";
-            this.wlc_code.HeaderText = "WLC Code";
+            this.wlc_code.HeaderText = "PLC Code";
             this.wlc_code.Name = "wlc_code";
             this.wlc_code.Width = 50;
             // 
             // katashiki
             // 
             this.katashiki.DataPropertyName = "katashiki";
-            this.katashiki.HeaderText = "KATASHIKI";
+            this.katashiki.HeaderText = "Suffix";
             this.katashiki.Name = "katashiki";
             // 
             // model_code
