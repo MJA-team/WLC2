@@ -1,6 +1,5 @@
 ﻿using ADM_WLC.SQLHelpers;
 using System;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Windows.Forms;
 

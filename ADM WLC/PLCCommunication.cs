@@ -612,8 +612,8 @@ namespace ADM_WLC
                         idx++;
                     }
                 }
-                ListtoDataTable lsttodt = new ListtoDataTable();
-                dta = lsttodt.ToDataTable(processtables);
+                //ListtoDataTable lsttodt = new ListtoDataTable();
+                dta = ListtoDataTable.ListToDataTable(processtables);
             }
             //Exception processing
             catch (Exception exception)
@@ -822,8 +822,8 @@ namespace ADM_WLC
                     }
                 }
                 else iReturnCode = 7;
-                ListtoDataTable lsttodt = new ListtoDataTable();
-                dta = lsttodt.ToDataTable(convtables);
+                //ListtoDataTable lsttodt = new ListtoDataTable();
+                dta = ListtoDataTable.ListToDataTable(convtables);
             }
             //Exception processing
             catch (Exception exception)
@@ -1037,8 +1037,8 @@ namespace ADM_WLC
                     }
                 }
                 else iReturnCode = 7;
-                ListtoDataTable lsttodt = new ListtoDataTable();
-                dta = lsttodt.ToDataTable(convtables);
+                //ListtoDataTable lsttodt = new ListtoDataTable();
+                dta = ListtoDataTable.ListToDataTable(convtables);
             }
             //Exception processing
             catch (Exception exception)

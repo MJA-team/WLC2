@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ADM_WLC.Models
 {
-    class ConvResultTableData
+    public class ConvResultTableData
     {
         public short Id { get; set; }
         public string pid { get; set; }
@@ -17,7 +17,7 @@ namespace ADM_WLC.Models
         public string chassis_number { get; set; }     
         public List<JobCode> jobCode { get; set; }
     }
-    class JobCode
+    public class JobCode
     {
         public short B1 { get; set; }
         public short B2 { get; set; }

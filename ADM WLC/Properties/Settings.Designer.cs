@@ -25,7 +25,7 @@ namespace ADM_WLC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source =.\\db\\adm_wlc.db")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source =.\\db\\adm_wlc.db; Version=3;")]
         public string LocalDB {
             get {
                 return ((string)(this["LocalDB"]));
