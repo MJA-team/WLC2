@@ -9,6 +9,8 @@ using System.Data.SQLite;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Linq;
 using System.Threading.Tasks;
+using ADM_WLC.Models;
+using System.Collections.Generic;
 
 namespace ADM_WLC
 {
@@ -184,7 +186,6 @@ namespace ADM_WLC
 
         private void TampilGrid(int pointer)
         {
-
             //TO DO masih salah
             try
             {
@@ -194,13 +195,27 @@ namespace ADM_WLC
                 }
                 dtView = DataGrid2Datatable(ref dataGridView_conv_result);
                 var row = GetRowbyId(pointer);
-                if (row == null)
+                object jc = row["jobCode"];
+                List<JobCode> jCodes = (jc as IEnumerable<JobCode>).Cast<JobCode>().ToList();
+
+                if (jc == null)
                 {
-                    dtView.Rows.Add(row);
+                    //dtView.Rows.Add(row);
                 }
-                
-                dtView.Rows.Add(row["jobcode"]);                
+                else
+                {
+                    foreach (var item in jCodes)
+                    {
+                        dtView.Rows.Add(item.B1.ToString(), item.B2.ToString());
+                    }
+                }
                 dataGridView_conv_result.DataSource = dtView;
+                textBox_pid_conv_result.Text = row["pid"].ToString();
+                textBox_vin_conv_result.Text = row["vin"].ToString();
+                textBox_wlccode_conv_result.Text = row["wlc_code"].ToString();
+                textBox_sfx_conv_result.Text = row["suffix"].ToString();
+                textBox_chasisnumber_conv_result.Text = row["chassis_number"].ToString();
+                textBox_modelcode_conv_result.Text = row["model_code"].ToString();
             }
             catch (Exception ex)
             {
@@ -233,7 +248,7 @@ namespace ADM_WLC
         private DataTable DataGrid2Datatable(ref DataGridView dataGridView)
         {
             DataTable table = new DataTable();
-            foreach(DataGridViewColumn d in dataGridView.Columns)
+            foreach (DataGridViewColumn d in dataGridView.Columns)
             {
                 table.Columns.Add(d.HeaderText);
             }

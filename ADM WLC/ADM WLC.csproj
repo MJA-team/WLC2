@@ -209,6 +209,7 @@
       <DependentUpon>SaveDataRangeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLHelpers\Helpers.cs" />
+    <Compile Include="SQLHelpers\WLCDataDB.cs" />
     <Compile Include="System\Web\UI.cs" />
     <EmbeddedResource Include="frm_conv_result\form_enable_edit.resx">
       <DependentUpon>form_enable_edit.cs</DependentUpon>
@@ -277,6 +278,9 @@
     <EmbeddedResource Include="frm_stamping_data\SaveDataRangeDialog.resx">
       <DependentUpon>SaveDataRangeDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="db\adm_wlc.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

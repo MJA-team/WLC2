@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="LocalDB" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source =.\db\adm_wlc.db</Value>
+      <Value Profile="(Default)">Data Source =.\db\adm_wlc.db; Version=3;</Value>
     </Setting>
     <Setting Name="LogicalStationNumber" Type="System.String" Scope="User">
       <Value Profile="(Default)">10</Value>
