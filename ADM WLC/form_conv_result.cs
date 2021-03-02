@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using ADM_WLC.SQLHelpers;
 using System.Data.SQLite;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Linq;
 using System.Threading.Tasks;
 using ADM_WLC.Models;
@@ -23,8 +22,10 @@ namespace ADM_WLC
         private SQLiteConnection conn;
         private SQLiteDataReader dr;
         string pass;
-        public string valid { get; private set; }
+        
+        private string check = Properties.Settings.Default.Pass;
 
+        //public string valid { get; private set; }
         //private string valid = "FFyIPbfu0qhn7+vt6MRbu5otTkWhNcbFqUTnMHPk34E="; //Password : 123456
 
         public form_conv_result()
@@ -36,16 +37,16 @@ namespace ADM_WLC
         {
             pass = (string)GetText.psub;
 
-            // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
-            byte[] salt = new byte[128 / 8];
-            string hashedsubmit = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: pass,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA1,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
+            //// derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
+            //byte[] salt = new byte[128 / 8];
+            //string hashedsubmit = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            //    password: pass,
+            //    salt: salt,
+            //    prf: KeyDerivationPrf.HMACSHA1,
+            //    iterationCount: 10000,
+            //    numBytesRequested: 256 / 8));
 
-            if (hashedsubmit == valid)
+            if (pass == check)
             {
                 UpdateChassis();
             }
@@ -59,16 +60,16 @@ namespace ADM_WLC
         {
             pass = (string)GetText.pedit;
 
-            // derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
-            byte[] salt = new byte[128 / 8];
-            string hashededit = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: pass,
-                salt: salt,
-                prf: KeyDerivationPrf.HMACSHA1,
-                iterationCount: 10000,
-                numBytesRequested: 256 / 8));
+            //// derive a 256-bit subkey (use HMACSHA1 with 10,000 iterations)
+            //byte[] salt = new byte[128 / 8];
+            //string hashededit = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            //    password: pass,
+            //    salt: salt,
+            //    prf: KeyDerivationPrf.HMACSHA1,
+            //    iterationCount: 10000,
+            //    numBytesRequested: 256 / 8));
 
-            if (hashededit == valid)
+            if (pass == check)
             {
                 textBox_chasisnumber_conv_result.ReadOnly = false;
                 textBox_chasisnumber_conv_result.BackColor = Color.White;
@@ -160,26 +161,26 @@ namespace ADM_WLC
             //while (dtAll == null)
             //{
 
-            try
-            {
-                String Valid = @"SELECT * FROM user_pass";
-                conn = new SQLiteConnection();
-                conn.ConnectionString = Helpers.connectionString;
-                SQLiteCommand cmd = new SQLiteCommand(Valid, conn);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                dr = cmd.ExecuteReader();
+            //try
+            //{
+            //    String Valid = @"SELECT * FROM user_pass";
+            //    conn = new SQLiteConnection();
+            //    conn.ConnectionString = Helpers.connectionString;
+            //    SQLiteCommand cmd = new SQLiteCommand(Valid, conn);
+            //    conn.Open();
+            //    cmd.ExecuteNonQuery();
+            //    dr = cmd.ExecuteReader();
 
-                while (dr.Read())
-                {
-                    valid = (string)(dr["pass"]);
-                }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //    while (dr.Read())
+            //    {
+            //        valid = (string)(dr["pass"]);
+            //    }
+            //    conn.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
 
             //TampilGrid();
         }
