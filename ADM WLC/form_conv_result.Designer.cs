@@ -108,6 +108,7 @@
             this.dataGridView_conv_result.Name = "dataGridView_conv_result";
             this.dataGridView_conv_result.Size = new System.Drawing.Size(244, 555);
             this.dataGridView_conv_result.TabIndex = 13;
+            this.dataGridView_conv_result.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_conv_result_CellFormatting);
             this.dataGridView_conv_result.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView_conv_result_RowPostPaint);
             // 
             // b1

@@ -641,15 +641,15 @@ namespace ADM_WLC
                         {
                             //Copy data row to Data
                             //Perlu cek dulu jika within range
-                            short iCCLink = dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]);
-                            short iStationNo = dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]);
-                            arrDeviceValue[0] = dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]);
-                            arrDeviceValue[1] = dr["depth"] is null ? 0 : Convert.ToInt16(dr["depth"]);
-                            arrDeviceValue[2] = dr["normal_reverse"] is null ? 0 : Convert.ToInt16(dr["normal_reverse"]);
-                            arrDeviceValue[3] = dr["margin_reverse"] is null ? 0 : Convert.ToInt16(dr["margin_reverse"]);
-                            arrDeviceValue[4] = dr["margin_of_adv"] is null ? 0 : Convert.ToInt16(dr["margin_of_adv"]);
-                            arrDeviceValue[5] = dr["margin_of_delay"] is null ? 0 : Convert.ToInt16(dr["margin_of_delay"]);
-                            arrDeviceValue[6] = dr["cut_off"] is null ? 0 : Convert.ToInt16(dr["cut_off"]);
+                            short iCCLink = (short)(dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]));
+                            short iStationNo = (short)(dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]));
+                            arrDeviceValue[0] = (short)(dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]));
+                            arrDeviceValue[1] = (short)(dr["depth"] is null ? 0 : Convert.ToInt16(dr["depth"]));
+                            arrDeviceValue[2] = (short)(dr["normal_reverse"] is null ? 0 : Convert.ToInt16(dr["normal_reverse"]));
+                            arrDeviceValue[3] = (short)(dr["margin_reverse"] is null ? 0 : Convert.ToInt16(dr["margin_reverse"]));
+                            arrDeviceValue[4] = (short)(dr["margin_of_adv"] is null ? 0 : Convert.ToInt16(dr["margin_of_adv"]));
+                            arrDeviceValue[5] = (short)(dr["margin_of_delay"] is null ? 0 : Convert.ToInt16(dr["margin_of_delay"]));
+                            arrDeviceValue[6] = (short)(dr["cut_off"] is null ? 0 : Convert.ToInt16(dr["cut_off"]));
                             string szProcessName = dr["process_name"] is null ? String.Empty : dr["process_name"].ToString();
 
                             //Copy data row Process Name to Data
@@ -852,15 +852,15 @@ namespace ADM_WLC
                         {
                             //Copy data row to Data
                             //Perlu cek dulu jika within range
-                            short iCCLink = dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]);
-                            short iStationNo = dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]);
-                            arrDeviceValue[0] = dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]);
-                            arrDeviceValue[1] = dr["depth"] is null ? 0 : Convert.ToInt16(dr["depth"]);
-                            arrDeviceValue[2] = dr["normal_reverse"] is null ? 0 : Convert.ToInt16(dr["normal_reverse"]);
-                            arrDeviceValue[3] = dr["margin_reverse"] is null ? 0 : Convert.ToInt16(dr["margin_reverse"]);
-                            arrDeviceValue[4] = dr["margin_of_adv"] is null ? 0 : Convert.ToInt16(dr["margin_of_adv"]);
-                            arrDeviceValue[5] = dr["margin_of_delay"] is null ? 0 : Convert.ToInt16(dr["margin_of_delay"]);
-                            arrDeviceValue[6] = dr["cut_off"] is null ? 0 : Convert.ToInt16(dr["cut_off"]);
+                            short iCCLink = (short)(dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]));
+                            short iStationNo = (short)(dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]));
+                            arrDeviceValue[0] = (short)(dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]));
+                            arrDeviceValue[1] = (short)(dr["depth"] is null ? 0 : Convert.ToInt16(dr["depth"]));
+                            arrDeviceValue[2] = (short)(dr["normal_reverse"] is null ? 0 : Convert.ToInt16(dr["normal_reverse"]));
+                            arrDeviceValue[3] = (short)(dr["margin_reverse"] is null ? 0 : Convert.ToInt16(dr["margin_reverse"]));
+                            arrDeviceValue[4] = (short)(dr["margin_of_adv"] is null ? 0 : Convert.ToInt16(dr["margin_of_adv"]));
+                            arrDeviceValue[5] = (short)(dr["margin_of_delay"] is null ? 0 : Convert.ToInt16(dr["margin_of_delay"]));
+                            arrDeviceValue[6] = (short)(dr["cut_off"] is null ? 0 : Convert.ToInt16(dr["cut_off"]));
                             string szProcessName = dr["process_name"] is null ? String.Empty : dr["process_name"].ToString();
 
                             //Copy data row Process Name to Data
@@ -1067,15 +1067,15 @@ namespace ADM_WLC
                         {
                             //Copy data row to Data
                             //Perlu cek dulu jika within range
-                            short iCCLink = dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]);
-                            short iStationNo = dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]);
-                            arrDeviceValue[0] = dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]);
-                            arrDeviceValue[1] = dr["depth"] is null ? 0 : Convert.ToInt16(dr["depth"]);
-                            arrDeviceValue[2] = dr["normal_reverse"] is null ? 0 : Convert.ToInt16(dr["normal_reverse"]);
-                            arrDeviceValue[3] = dr["margin_reverse"] is null ? 0 : Convert.ToInt16(dr["margin_reverse"]);
-                            arrDeviceValue[4] = dr["margin_of_adv"] is null ? 0 : Convert.ToInt16(dr["margin_of_adv"]);
-                            arrDeviceValue[5] = dr["margin_of_delay"] is null ? 0 : Convert.ToInt16(dr["margin_of_delay"]);
-                            arrDeviceValue[6] = dr["cut_off"] is null ? 0 : Convert.ToInt16(dr["cut_off"]);
+                            short iCCLink = (short)(dr["cc_link_no"] is null ? 0 : Convert.ToInt16(dr["cc_link_no"]));
+                            short iStationNo = (short)(dr["stno"] is null ? 0 : Convert.ToInt16(dr["stno"]));
+                            arrDeviceValue[0] = (short)(dr["process_type"] is null ? 0 : Convert.ToInt16(dr["process_type"]));
+                            arrDeviceValue[1] = (short)(dr["depth"] is null ? 0 : Convert.ToInt16(dr["depth"]));
+                            arrDeviceValue[2] = (short)(dr["normal_reverse"] is null ? 0 : Convert.ToInt16(dr["normal_reverse"]));
+                            arrDeviceValue[3] = (short)(dr["margin_reverse"] is null ? 0 : Convert.ToInt16(dr["margin_reverse"]));
+                            arrDeviceValue[4] = (short)(dr["margin_of_adv"] is null ? 0 : Convert.ToInt16(dr["margin_of_adv"]));
+                            arrDeviceValue[5] = (short)(dr["margin_of_delay"] is null ? 0 : Convert.ToInt16(dr["margin_of_delay"]));
+                            arrDeviceValue[6] = (short)(dr["cut_off"] is null ? 0 : Convert.ToInt16(dr["cut_off"]));
                             string szProcessName = dr["process_name"] is null ? String.Empty : dr["process_name"].ToString();
 
                             //Copy data row Process Name to Data
@@ -1125,9 +1125,9 @@ namespace ADM_WLC
             for (int idxValue = 0; idxValue < arrValue.Length; idxValue++)
             {
                 var conditionX = idxChar < byChar.Length;
-                byte x = conditionX ? byChar[idxChar] : 0;
+                byte x = (byte)(conditionX ? byChar[idxChar] : 0);
                 var conditionY = idxChar + 1 < byChar.Length;
-                byte y = conditionY ? byChar[idxChar + 1] : 0;
+                byte y = (byte)(conditionY ? byChar[idxChar + 1] : 0);
 
                 arrValue[idxValue] = BytesToInt16(y, x);
 
