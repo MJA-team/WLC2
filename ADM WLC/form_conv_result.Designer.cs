@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_enableedit_conv_result = new System.Windows.Forms.Button();
             this.btn_zeroofall_conv_result = new System.Windows.Forms.Button();
             this.btn_pidlist_conv_result = new System.Windows.Forms.Button();
             this.dataGridView_conv_result = new System.Windows.Forms.DataGridView();
-            this.b1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.b2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_hardcopy_conv_result = new System.Windows.Forms.Button();
             this.btn_close_conv_result = new System.Windows.Forms.Button();
             this.btn_submit_conv_result = new System.Windows.Forms.Button();
@@ -55,6 +54,8 @@
             this.btn_enableedit1_conv_result = new System.Windows.Forms.Button();
             this.lbl_processname_conv_result = new System.Windows.Forms.Label();
             this.textBox_processname_conv_result = new System.Windows.Forms.TextBox();
+            this.b1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.b2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_conv_result)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -110,18 +111,6 @@
             this.dataGridView_conv_result.TabIndex = 13;
             this.dataGridView_conv_result.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_conv_result_CellFormatting);
             this.dataGridView_conv_result.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dataGridView_conv_result_RowPostPaint);
-            // 
-            // b1
-            // 
-            this.b1.DataPropertyName = "b1";
-            this.b1.HeaderText = "B1";
-            this.b1.Name = "b1";
-            // 
-            // b2
-            // 
-            this.b2.DataPropertyName = "b2";
-            this.b2.HeaderText = "B2";
-            this.b2.Name = "b2";
             // 
             // btn_hardcopy_conv_result
             // 
@@ -341,6 +330,20 @@
             this.textBox_processname_conv_result.Name = "textBox_processname_conv_result";
             this.textBox_processname_conv_result.Size = new System.Drawing.Size(325, 20);
             this.textBox_processname_conv_result.TabIndex = 29;
+            // 
+            // b1
+            // 
+            this.b1.DataPropertyName = "b1";
+            this.b1.HeaderText = "B1";
+            this.b1.Name = "b1";
+            // 
+            // b2
+            // 
+            this.b2.DataPropertyName = "b2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.b2.DefaultCellStyle = dataGridViewCellStyle1;
+            this.b2.HeaderText = "B2";
+            this.b2.Name = "b2";
             // 
             // form_conv_result
             // 
